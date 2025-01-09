@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Homepage from "./pages/Homepage";
 import ForgetPassword from "./pages/ForgetPassword";
+import Notification from "./pages/Notification";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ function App() {
     {
       path: "/forgot-password",
       element: <ForgetPassword />,
+    },
+    {
+      path: "/notifications",
+      element: <Notification />,
     },
   ]);
 
