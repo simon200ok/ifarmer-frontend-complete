@@ -95,7 +95,7 @@ function NotificationPage() {
                   <li
                     key={notification.notificationId}
                     className={`notification-item ${notification.status === "UNREAD" ? "unread" : "read"}`}
-                    onClick={() => markNotificationAsRead(notification.notificationId)} 
+                    onClick={() => markNotificationAsRead(notification.notificationId)} // Mark as read when clicked
                   >
                     <div>
                       <strong>{notification.title}</strong>
