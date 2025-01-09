@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Modal } from "react-bootstrap"; // Ensure react-bootstrap is installed
+import { Modal } from "react-bootstrap"; 
 import './NotificationPage.css';
 import LeftPane from "../Components/LeftPane";
 
@@ -13,7 +13,6 @@ function NotificationPage() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch notifications
   useEffect(() => {
     const token = getAuthToken();
     if (!token) {
@@ -96,7 +95,7 @@ function NotificationPage() {
                   <li
                     key={notification.notificationId}
                     className={`notification-item ${notification.status === "UNREAD" ? "unread" : "read"}`}
-                    onClick={() => markNotificationAsRead(notification.notificationId)} // Mark as read when clicked
+                    onClick={() => markNotificationAsRead(notification.notificationId)} 
                   >
                     <div>
                       <strong>{notification.title}</strong>
