@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import NotificationPage from "./pages/Notification";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,11 @@ function App() {
     {
       path: "/signup",
       element: <Signup />,
+    },
+
+    {
+      path: "/notifications",
+      element: <NotificationPage />,
     },
   ]);
 
