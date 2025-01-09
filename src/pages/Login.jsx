@@ -36,7 +36,7 @@ const Login = () => {
       } else if (responseCode === "002") {
         localStorage.setItem("token", response.data.loginInfo.token);
 
-        navigate("/");
+        navigate("/homepage");
 
         alert("Login successful!");
       } else {
@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <div className="wrapper">
       <div className="container">
-        <LeftPane />
+        <LeftPane message="Welcome Back" />
         <div className="right">
           <div className="logo">
             <img src={logo} alt="logo" />

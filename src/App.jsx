@@ -4,7 +4,8 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import NotificationPage from "./pages/Notification";
+import Homepage from "./pages/Homepage";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function App() {
   const router = createBrowserRouter([
@@ -21,10 +22,13 @@ function App() {
       path: "/signup",
       element: <Signup />,
     },
-
     {
-      path: "/notifications",
-      element: <NotificationPage />,
+      path: "/homepage",
+      element: <Homepage />,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgetPassword />,
     },
   ]);
 
