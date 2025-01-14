@@ -7,12 +7,13 @@ import Signup from "./pages/Signup";
 import Homepage from "./pages/Homepage";
 import ForgetPassword from "./pages/ForgetPassword";
 import Notification from "./pages/Notification";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <LandingPage />,
     },
 
     {
