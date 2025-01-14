@@ -25,7 +25,7 @@ function UserPage() {
   }, []);
 
   return (
-    <div>
+    <div className="table">
       <h1>{getCurrentGreeting()}</h1>
       <table border="1">
         <thead>
