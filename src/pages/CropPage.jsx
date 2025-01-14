@@ -6,6 +6,7 @@ import Corn from "../assets/corn.png";
 import Arrow from "../assets/arrow.png";
 
 import "./CropPage.css";
+import UpcomingTask from "./UpcomingTask";
 
 function CropPage() {
   const getCurrentGreeting = () => {
@@ -87,71 +88,74 @@ function CropPage() {
   };
 
   return (
-    <div className="crop-wrapper">
-      <div className="greetings">
-        <h1>
-          {getCurrentGreeting()}, {firstName}
-        </h1>
-      </div>
-      <div className="background">
-        <div className="green">
-          <h1>Manage Your Crops</h1>
-          <div className="crop">
-            <div className="total">
-              <h1>Total Crops</h1>
-              <p>{getCropCountText(cropStatusCounts.TOTAL)}</p>
+    <div className="containers">
+      <div className="crop-wrapper">
+        <div className="greetings">
+          <h1>
+            {getCurrentGreeting()}, {firstName}
+          </h1>
+        </div>
+        <div className="background">
+          <div className="green">
+            <h1>Manage Your Crops</h1>
+            <div className="crop">
+              <div className="total">
+                <h1>Total Crops</h1>
+                <p>{getCropCountText(cropStatusCounts.TOTAL)}</p>
+              </div>
+              <div className="total">
+                <h1>Mature Crops</h1>
+                <p>{getCropCountText(cropStatusCounts.GROWING)}</p>
+              </div>
+              <div className="total">
+                <h1>Flowering Crops</h1>
+                <p>{getCropCountText(cropStatusCounts.FLOWERING)}</p>
+              </div>
             </div>
-            <div className="total">
-              <h1>Mature Crops</h1>
-              <p>{getCropCountText(cropStatusCounts.GROWING)}</p>
-            </div>
-            <div className="total">
-              <h1>Flowering Crops</h1>
-              <p>{getCropCountText(cropStatusCounts.FLOWERING)}</p>
-            </div>
+            <a>
+              Add new Crop
+              <span>
+                <img src={Arrow} alt="arrow Icon" />
+              </span>
+            </a>
           </div>
-          <a>
-            Add new Crop
-            <span>
-              <img src={Arrow} alt="arrow Icon" />
-            </span>
-          </a>
+          <div className="crop-image">
+            <img src={Corn} alt="corn Image" />
+          </div>
         </div>
-        <div className="crop-image">
-          <img src={Corn} alt="corn Image" />
-        </div>
-      </div>
-      <div className="table">
-        <h1>Current Crops</h1>
-        <table border="1">
-          <thead>
-            <tr>
-              <th>Crop name</th>
-              <th>Status</th>
-              <th>Quantity</th>
-              <th>Location</th>
-              <th>Sow Date</th>
-              <th>Harvest Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {crops.map((crop) => (
-              <tr key={crop.cropId}>
-                <td>{crop.cropName}</td>
-                <td>{crop.cropStatus}</td>
-                <td>{crop.quantity}</td>
-                <td>{crop.location}</td>
-                <td>{crop.sowDate}</td>
-                <td>{crop.harvestDate}</td>
-                <td>
-                  <img src={dots} alt="Menu" />
-                </td>
+        <div className="table">
+          <h1>Current Crops</h1>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Crop name</th>
+                <th>Status</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Sow Date</th>
+                <th>Harvest Date</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {crops.map((crop) => (
+                <tr key={crop.cropId}>
+                  <td>{crop.cropName}</td>
+                  <td>{crop.cropStatus}</td>
+                  <td>{crop.quantity}</td>
+                  <td>{crop.location}</td>
+                  <td>{crop.sowDate}</td>
+                  <td>{crop.harvestDate}</td>
+                  <td>
+                    <img src={dots} alt="Menu" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+      <UpcomingTask />
     </div>
   );
 }
