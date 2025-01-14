@@ -1,6 +1,5 @@
-import React from "react";
 import Navbar from "../Components/Navbar";
-import "./Homepage.css"; 
+import "./Homepage.css";
 import LeftPane from "../Components/LeftPane";
 
 function Homepage() {
@@ -14,7 +13,8 @@ function Homepage() {
         <div className="right-content">
           <h1>Welcome to the iFarm demo application!</h1>
           <p>
-            Use the navigation bar above to access other pages of the application.
+            Use the navigation bar above to access other pages of the
+            application.
           </p>
         </div>
       </div>

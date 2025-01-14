@@ -35,6 +35,7 @@ const Login = () => {
         setError(responseMessage);
       } else if (responseCode === "002") {
         localStorage.setItem("token", response.data.loginInfo.token);
+        localStorage.setItem("firstName", response.data.loginInfo.firstName);
 
         navigate("/homepage");
 

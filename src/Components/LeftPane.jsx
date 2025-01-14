@@ -1,6 +1,7 @@
 import "./LeftPane.css";
 import farmerImage from "../assets/farmer.png";
 
+// eslint-disable-next-line react/prop-types
 function LeftPane({ message }) {
   return (
     <div className="left">

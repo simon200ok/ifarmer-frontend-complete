@@ -1,10 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import "./App.css";
-import Home from "./pages/Home";
+import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Homepage from "./pages/Homepage";
 import ForgetPassword from "./pages/ForgetPassword";
 import Notification from "./pages/Notification";
 import LandingPage from "./pages/LandingPage";
@@ -26,7 +25,13 @@ function App() {
     },
     {
       path: "/homepage",
-      element: <Homepage />,
+      element: <UserDashboardLayout />,
+      children: [
+        {
+          path: "/homepage/crops",
+          element: <CropPage />,
+        },
+      ],
     },
     {
       path: "/forgot-password",
@@ -35,6 +40,16 @@ function App() {
     {
       path: "/notifications",
       element: <Notification />,
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "/admin/users",
+          element: <UserPage />,
+        },
+      ],
     },
   ]);
 
