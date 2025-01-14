@@ -10,9 +10,9 @@ function UserPage() {
     if (currentHour < 12) {
       return "Good Morning,Admin";
     } else if (currentHour < 18) {
-      return "Good Afternoon,Admin";
+      return "Good Afternoon, Admin";
     } else {
-      return "Good Night,Admin";
+      return "Good Night, Admin";
     }
   };
   const [users, setUsers] = useState([]);
