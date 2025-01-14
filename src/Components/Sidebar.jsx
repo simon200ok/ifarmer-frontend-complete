@@ -4,7 +4,7 @@ import settings from "../assets/icons/settings.png";
 import bell from "../assets/icons/bell.png";
 import profile from "../assets/icons/profile.png";
 import logout from "../assets/icons/logout.png";
-import crop from "../assets/icons/plant.png";
+import crop from "../assets/icons/Plant.png";
 import cow from "../assets/icons/cow.png";
 import inventory from "../assets/icons/inventory.png";
 import community from "../assets/icons/web.png";
