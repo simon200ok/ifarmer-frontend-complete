@@ -19,11 +19,11 @@ function AdminSidebar() {
         <img src={logo} alt="logo" />
       </div>
       <div className="icons">
-        <div className="iconGroup" onClick={() => navigate("/admin/users")}>
+        <div className="iconGroup">
           <img src={dashboard} alt="dashboard icon" />
           <span>Dashboard</span>
         </div>
-        <div className="iconGroup">
+        <div className="iconGroup" onClick={() => navigate("/admin/users")}>
           <img src={user} alt="User icon" />
           <span>User Database</span>
         </div>
