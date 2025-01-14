@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import dots from "C:/Users/USER/Desktop/Ifarmr-FE/JAVA_FSD_FE/src/assets/icons/dots.png";
+import dots from "../../assets/icons/dots.png";
 
 import "./Admin.css";
 
