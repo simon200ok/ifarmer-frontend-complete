@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 import './LandingPage.css';
 
 
@@ -250,16 +250,16 @@ function LandingPage () {
             </div>
             <p>Optimize your farming operations and connect with a community of experts.</p>
             <div className="social-icons">
-              <div className="icons">
+              <div className="iconss">
                 <img src={instagram} alt="Instagram" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={pinterest} alt="Pinterest" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={facebook} alt="Facebook" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={behance} alt="Behance" />
               </div>
             </div>

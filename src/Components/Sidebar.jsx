@@ -78,7 +78,7 @@ function Sidebar() {
           <img src={community} alt="Community Icon" />
           <span>Community</span>
         </div>
-        <div className="icon-group">
+        <div className="icon-group"onClick={() => navigate("/homepage/Notifications")}>
           <img src={bell} alt="Notification Icon" />
           <span>Notification</span>
         </div>

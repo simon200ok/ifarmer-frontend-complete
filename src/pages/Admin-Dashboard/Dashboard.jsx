@@ -24,19 +24,39 @@ const Dashboard = () => {
   const [weeklyActiveData, setWeeklyActiveData] = useState([]);
   const [userGrowthData, setUserGrowthData] = useState([]);
   const [adminName, setAdminName] = useState("");
+  const [currentActiveUsers, setCurrentActiveUsers] = useState(0);
+
+  const getStartOfWeek = () => {
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+    const difference = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek; // Adjust for Monday being the start of the week
+    const startOfWeek = new Date(now.setDate(now.getDate() + difference));
+    startOfWeek.setHours(0, 0, 0, 0); // Set time to midnight
+
+    // Format as YYYY-MM-DDTHH:mm:ss
+    const formattedDate = startOfWeek
+      .toLocaleString("sv-SE", { timeZone: "UTC" }) // Ensures ISO-like format in local timezone
+      .replace(" ", "T");
+    return formattedDate;
+  };
 
   useEffect(() => {
     setAdminName(localStorage.getItem("adminName") || "Admin");
 
     const fetchData = async () => {
       try {
+        const startOfWeekISO = getStartOfWeek();
         const glanceResponse = await axios.get("http://localhost:8080/api/v1/admin/glance");
-        const weeklyActiveResponse = await axios.get("http://localhost:8080/api/v1/admin/weekly-active");
+        const weeklyActiveResponse = await axios.get(
+          `http://localhost:8080/api/v1/admin/weekly-logins?startOfWeek=${startOfWeekISO}`
+        );
         const userGrowthResponse = await axios.get("http://localhost:8080/api/v1/admin/user-growth");
+        const currentActiveUsers = await axios.get("http://localhost:8080/api/v1/admin/current-active-users");
 
         setGlanceData(glanceResponse.data);
         setWeeklyActiveData(weeklyActiveResponse.data);
         setUserGrowthData(userGrowthResponse.data);
+        setCurrentActiveUsers(currentActiveUsers.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -48,7 +68,6 @@ const Dashboard = () => {
   // Weekly Active Users Chart Data
   const weeklyActiveChartData = useMemo(
     () => ({
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       datasets: [
         {
           label: "Weekly Active Users",
@@ -144,7 +163,7 @@ const Dashboard = () => {
                   </div>
                   <div className="total">
                     <h1>Active Users</h1>
-                    <p>{glanceData.activeUsers}</p>
+                    <p>{currentActiveUsers}</p>
                   </div>
                 </div>
 

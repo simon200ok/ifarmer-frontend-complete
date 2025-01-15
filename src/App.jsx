@@ -41,16 +41,15 @@ function App() {
           path: "settings",
           element: <Settings />,
         },
+        {
+          path: "notifications",
+          element: <Notification />,
+        },
       ],
     },
     {
       path: "/forgot-password",
       element: <ForgetPassword />,
-    },
-
-    {
-      path: "/notifications",
-      element: <Notification />,
     },
     {
       path: "/admin",
