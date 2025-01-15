@@ -11,7 +11,8 @@ import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
 import UserPage from "./pages/Admin-Dashboard/UserPage";
 import UserDashboardLayout from "./pages/UserDashboardLayout";
 import CropPage from "./pages/CropPage";
-
+import Dashboard from "./pages/Admin-Dashboard/Dashboard";
+import Settings from "./pages/Admin-Dashboard/Settings";
 
 function App() {
   const router = createBrowserRouter([
@@ -36,15 +37,19 @@ function App() {
           path: "/homepage/crops",
           element: <CropPage />,
         },
+        {
+          path: "settings",
+          element: <Settings />,
+        },
+        {
+          path: "notifications",
+          element: <Notification />,
+        },
       ],
     },
     {
       path: "/forgot-password",
       element: <ForgetPassword />,
-    },
-    {
-      path: "/notifications",
-      element: <Notification />,
     },
     {
       path: "/admin",
@@ -53,6 +58,14 @@ function App() {
         {
           path: "/admin/users",
           element: <UserPage />,
+        },
+        {
+          path: "/admin",
+          element: <Dashboard />,
+        },
+        {
+          path: "/admin/settings",
+          element: <Settings />,
         },
       ],
     },

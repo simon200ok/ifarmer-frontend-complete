@@ -1,35 +1,25 @@
+/* Container */
 .notification-container {
-  display: flex;
-  position: relative;
-  height: 100vh;
+  padding: 30px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  max-width: 600px;
+  margin-left: 20px;  /* Align the container to the left */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.left-pane-container {
-  width: 50%;
-  background-color: #f4f4f4;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-}
-
-.notification-section {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
+/* Header */
 .notification-header {
   display: flex;
   align-items: center;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
 }
 
 .notification-header i {
-  font-size: 24px;
   margin-right: 10px;
 }
 
@@ -37,57 +27,80 @@
   background-color: green;
   color: white;
   border-radius: 50%;
-  padding: 5px 10px;
+  padding: 5px 12px;
   margin-left: 10px;
+  font-size: 14px;
 }
 
-.notification-modal .modal-dialog {
-  position: absolute;
-  top: 100px;
-  right: 20px;
-  max-width: 400px;
-  margin: 0;
-  z-index: 1050;
-}
-
-.modal-body {
-  max-height: 500px;
-  overflow-y: auto;
+/* Notification List */
+.notification-list {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
 }
 
 .notification-item {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
+  flex-wrap: wrap; /* Allow content to wrap */
 }
 
 .notification-item.unread {
-  background-color: #e6ffe6;
+  background-color: #d4f7d4; /* Light green for unread notifications */
 }
 
 .notification-item.read {
-  background-color: white;
+  background-color: #f9f9f9; /* Light gray for read notifications */
 }
 
-.notification-button {
-  background-color: green;
-  color: white;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 3px;
+.notification-item:hover {
+  background-color: #eaeaea; /* Hover effect */
 }
 
+/* Notification Number */
+.notification-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 15px;
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+/* Notification Content */
+.notification-content {
+  flex-grow: 1; /* Allow content to grow and take available space */
+}
+
+.notification-message {
+  font-size: 14px;
+  color: #555;
+}
+
+.notification-timestamp {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 5px;
+  white-space: nowrap; /* Prevent timestamp from breaking onto a new line */
+}
+
+/* Small screen adjustments */
 @media (max-width: 768px) {
-  .left-pane-container {
-    display: none;
+  .notification-container {
+    padding: 20px;
+    margin-left: 20px;  /* Adjust left margin on small screens */
   }
 
-  .notification-modal .modal-dialog {
-    top: 80px;
-    right: 10px;
-    max-width: 90%;
+  .notification-header {
+    font-size: 20px;
+  }
+
+  .notification-list {
+    padding: 15px;
   }
 }
