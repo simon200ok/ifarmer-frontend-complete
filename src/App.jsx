@@ -1,12 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import "./App.css";
-import Home from "./pages/Home";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Homepage from "./pages/Homepage";
 import ForgetPassword from "./pages/ForgetPassword";
 import Notification from "./pages/Notification";
+import LandingPage from "./pages/LandingPage";
+import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
+import UserPage from "./pages/Admin-Dashboard/UserPage";
+import UserDashboardLayout from "./pages/UserDashboardLayout";
+import CropPage from "./pages/CropPage";
+
 import ForgotPassword from "./pages/ForgotPassword";
 import ProfileModal from "./pages/UpdateProfile";
 
@@ -14,7 +19,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <LandingPage />,
     },
 
     {
@@ -27,7 +32,13 @@ function App() {
     },
     {
       path: "/homepage",
-      element: <Homepage />,
+      element: <UserDashboardLayout />,
+      children: [
+        {
+          path: "/homepage/crops",
+          element: <CropPage />,
+        },
+      ],
     },
     {
       path: "/forgot-password",
@@ -36,6 +47,16 @@ function App() {
     {
       path: "/notifications",
       element: <Notification />,
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      children: [
+        {
+          path: "/admin/users",
+          element: <UserPage />,
+        },
+      ],
     },
     {
       path: "/forgotpassword",

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border: none;
+  font-family: "Raleway", serif;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.task-header h1 {
+  font-size: 16px;
+  color: #1e1e1e;
+}
+
+.task-header p {
+  font-size: 14px;
+}
+
+.task-icon {
+  background-color: #d1d9d9;
+  padding: 10px;
+  border-radius: 50%;
+}
+.task {
+  display: grid;
+  grid-template-columns: 0.3fr 1.5fr 0.7fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.task h2 {
+  font-size: 12px;
+}
+.task p {
+  font-size: 10px;
+}
