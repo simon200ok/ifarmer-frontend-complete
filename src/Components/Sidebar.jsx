@@ -70,7 +70,7 @@ function Sidebar() {
         </div>
 
         <p>Settings</p>
-        <div className="icon-group">
+        <div className="iconGroup" onClick={() => navigate("/homepage/settings")}>
           <img src={settings} alt="Settings Icon" />
           <span>Settings</span>
         </div>
