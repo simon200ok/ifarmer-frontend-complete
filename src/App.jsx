@@ -10,6 +10,9 @@ import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
 import UserPage from "./pages/Admin-Dashboard/UserPage";
 import UserDashboardLayout from "./pages/UserDashboardLayout";
 import CropPage from "./pages/CropPage";
+import LivestockPage from "./pages/LivestockPage";
+import EditLivestock from "./pages/EditLivestock";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +36,14 @@ function App() {
         {
           path: "/homepage/crops",
           element: <CropPage />,
+        },
+        {
+          path: "/homepage/livestock",
+          element: <LivestockPage />,
+        },
+        {
+          path: "/homepage/update-livestock/:id",
+          element: <EditLivestock />,
         },
       ],
     },

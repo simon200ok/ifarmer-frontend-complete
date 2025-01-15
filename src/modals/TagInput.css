@@ -1,0 +1,58 @@
+TagInput.css * {
+  margin: 0;
+  padding: 0;
+}
+
+.tag-input-container {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cccccc3d;
+  border-radius: 4px;
+  padding: 1px;
+  background-color: #cccccc3d;
+}
+
+.tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #e6f4e6;
+  color: #000;
+  border: 1px solid #6fbf73;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.tag button.remove-tag {
+  background: none;
+  border: none;
+  color: #6fbf73;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tag-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  min-width: 100px;
+}
+
+.add-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+}
