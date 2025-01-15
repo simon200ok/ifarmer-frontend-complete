@@ -30,10 +30,9 @@ import behance from '../assets/images/behance.png';
 import footerLogo from '../assets/images/hausafarmer2.jpeg';
 
 
-  
 
 
-const LandingPage = () => {
+function LandingPage () {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -60,7 +59,7 @@ const LandingPage = () => {
     <div>
       <header>
         <div className="containerr">
-          <div className="logo">
+          <div className="logoo">
             <img src={logo} alt="iFarmr Logo" />
             <h1>iFarmr</h1>
           </div>
@@ -132,32 +131,32 @@ const LandingPage = () => {
       </section>
 
       <section className="how-it-works">
-        <div className="container">
-          <div className="content">
+        <div className="containerss">
+          <div className="contents">
             <h2>How It Works?</h2>
             <p>From Sign-Up to Successful Farming—Follow <br /> These Simple Steps to Unlock the Full Potential of <br /> iFarmr and Transform Your Agricultural Practices.</p>
             <a href="#" className="btn">Learn More →</a>
           </div>
-          <div className="steps">
-            <div className="step">
+          <div className="stepss">
+            <div className="steps">
               <div className="icon">
                 <img src={createAccount} alt="Create Account" />
               </div>
               <p>Create your account in just a few clicks.</p>
             </div>
-            <div className="step">
+            <div className="steps">
               <div className="icon">
                 <img src={enterDetails} alt="Enter Details" />
               </div>
               <p>Enter details about your crops and livestock.</p>
             </div>
-            <div className="step">
+            <div className="steps">
               <div className="icon">
                 <img src={receiveData} alt="Receive Data" />
               </div>
               <p>Receive tailored tips and real-time data.</p>
             </div>
-            <div className="step">
+            <div className="steps">
               <div className="icon">
                 <img src={shareExperiences} alt="Share Experiences" />
               </div>
@@ -178,7 +177,7 @@ const LandingPage = () => {
             <img src={vectorPrev} alt="Previous" />
           </button>
           <div className="cards-container">
-            <div className="card">
+            <div className="cards">
               <img src={testimonialJohn} alt="John Doe" />
                 <div className="stars">
                   {[...Array(5)].map((_, index) => (
@@ -189,7 +188,7 @@ const LandingPage = () => {
               <p className="role">Rice Farmer</p>
               <p>"iFarmr has revolutionized the way I manage my farm!"</p>
             </div>
-            <div className="card middle-card">
+            <div className="cards middle-card">
               <img src={testimonialJane} alt="Jane Smith" />
                 <div className="stars">
                   {[...Array(5)].map((_, index) => (
@@ -200,7 +199,7 @@ const LandingPage = () => {
               <p className="role">Poultry Farmer</p>
               <p>"The community feature has been a game-changer for me."</p>
             </div>
-            <div className="card">
+            <div className="cards">
               <img src={testimonialAhmed} alt="Ahmed Musa" />
                 <div className="stars">
                  {[...Array(5)].map((_, index) => (
@@ -245,8 +244,8 @@ const LandingPage = () => {
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-left">
-            <div className="logo">
-              <img src={footerLogo} alt="iFarmr Logo"/>
+            <div className="logoo">
+              <img src={footerLogo} alt="iFarmr Logoo"/>
               <span>iFarmr</span>
             </div>
             <p>Optimize your farming operations and connect with a community of experts.</p>

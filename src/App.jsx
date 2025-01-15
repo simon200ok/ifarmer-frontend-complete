@@ -1,12 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import "./App.css";
-import LandingPage from "./pages/LandingPage";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgetPassword from "./pages/ForgetPassword";
 import Notification from "./pages/Notification";
 import LandingPage from "./pages/LandingPage";
+import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
+import UserPage from "./pages/Admin-Dashboard/UserPage";
+import UserDashboardLayout from "./pages/UserDashboardLayout";
+import CropPage from "./pages/CropPage";
+
 
 function App() {
   const router = createBrowserRouter([
