@@ -1,0 +1,40 @@
+.popular-posts h6 {
+  font-size: 14px;
+}
+
+.popular-header img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.popular-header h1 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.popular-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.popular-posts p,
+.popular-posts h2,
+.popular-posts h3 {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+.popular-left {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.popular-posts {
+  margin-top: 3rem;
+}

@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import LeftPane from "../Components/LeftPane";
 import "./Login.css";
-
 import logo from "../assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
 
     try {
       const response = await axios.post(
@@ -32,53 +31,43 @@ const Login = () => {
       const { responseCode, responseMessage } = response.data;
 
       if (responseCode === "003") {
-        setError(responseMessage);
+        toast.error(responseMessage);
       } else if (responseCode === "002") {
         localStorage.setItem("token", response.data.loginInfo.token);
         localStorage.setItem("firstName", response.data.loginInfo.firstName);
 
-        navigate("/homepage");
-
-        alert("Login successful!");
-      } else {
-        setError(responseMessage);
+        toast.success("Login successful!");
 
         setTimeout(() => {
-          setError("");
-        }, 5000);
+          navigate("/homepage/crops");
+        }, 3000);
+      } else {
+        toast.error(responseMessage);
       }
     } catch (error) {
       if (error.response) {
-        setError(
+        toast.error(
           error.response?.data?.responseMessage ||
             "Something went wrong. Please try again."
         );
-        setTimeout(() => {
-          setError("");
-        }, 5000);
       } else if (error.request) {
-        setError(
+        toast.error(
           "Network error. Please check your internet connection and try again."
         );
-        setTimeout(() => {
-          setError("");
-        }, 5000);
       } else {
-        setError("An unexpected error occurred. Please try again.");
-        setTimeout(() => {
-          setError("");
-        }, 5000);
+        toast.error("An unexpected error occurred. Please try again.");
       }
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="wrapper">
       <div className="container">
         <LeftPane message="Welcome Back" />
         <div className="right">
-          <div className="logo">
+          <div className="logo" onClick={() => navigate("/homepage/livestock")}>
             <img src={logo} alt="logo" />
           </div>
           <form onSubmit={handleLogin}>
@@ -104,9 +93,6 @@ const Login = () => {
                 required
               />
             </div>
-            {error && (
-              <h1 style={{ color: "red", fontSize: "14px" }}>{error}</h1>
-            )}
             <p>Forgot Password?</p>
             <div className="formButton">
               <button type="submit" disabled={loading}>
@@ -116,6 +102,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

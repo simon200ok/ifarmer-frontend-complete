@@ -8,13 +8,14 @@ function UserPage() {
   const getCurrentGreeting = () => {
     const currentHour = new Date().getHours();
     if (currentHour < 12) {
-      return "Good Morning,Admin";
+      return "Good Morning, Admin";
     } else if (currentHour < 18) {
       return "Good Afternoon, Admin";
     } else {
       return "Good Night, Admin";
     }
   };
+
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -23,6 +24,36 @@ function UserPage() {
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
+
+  const handleDelete = (userId) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    fetch(`http://localhost:8080/api/v1/admin/user`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setUsers(users.filter((user) => user.userId !== userId));
+          alert(`User with ID ${userId} has been deleted successfully.`);
+        } else {
+          alert("Failed to delete user.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+      });
+  };
 
   return (
     <div className="table">
@@ -37,7 +68,7 @@ function UserPage() {
             <th>Gender</th>
             <th>Date Joined</th>
             <th>Last Active</th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +82,9 @@ function UserPage() {
               <td>{user.dateCreated}</td>
               <td>{user.lastLogoutTime}</td>
               <td>
-                <img src={dots} alt="" />
+                <button onClick={() => handleDelete(user.userId)}>
+                  <img src={dots} alt="Options" />
+                </button>
               </td>
             </tr>
           ))}

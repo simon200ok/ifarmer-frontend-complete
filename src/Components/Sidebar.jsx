@@ -35,9 +35,13 @@ function Sidebar() {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
+          withCredentials: true,
         }
       );
+
       localStorage.removeItem("token");
+
+      sessionStorage.removeItem("token");
 
       navigate("/");
     } catch (error) {
@@ -46,39 +50,65 @@ function Sidebar() {
     }
   };
 
+  const handleNavigation = (path) => {
+    // Just navigate to the path without removing the token
+    navigate(path);
+  };
+
   return (
     <div className="user-sidebar">
       <div className="user-logo">
         <img src={logo} alt="logo" />
       </div>
       <div className="user-icons">
-        <div className="icon-group">
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/dashboard")}
+        >
           <img src={dashboard} alt="dashboard icon" />
           <span>Dashboard</span>
         </div>
-        <div className="icon-group" onClick={() => navigate("/homepage/crops")}>
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/homepage/crops")}
+        >
           <img src={crop} alt="Crop icon" />
           <span>Crop Management</span>
         </div>
-        <div className="icon-group">
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/homepage/livestock")}
+        >
           <img src={cow} alt="Livestock icon" />
           <span>Livestock Management</span>
         </div>
-        <div className="icon-group">
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/homepage/inventory")}
+        >
           <img src={inventory} alt="Inventory icon" />
           <span>Inventory</span>
         </div>
 
         <p>Settings</p>
-        <div className="iconGroup" onClick={() => navigate("/homepage/settings")}>
+        <div
+          className="iconGroup"
+          onClick={() => handleNavigation("/homepage/settings")}
+        >
           <img src={settings} alt="Settings Icon" />
           <span>Settings</span>
         </div>
-        <div className="icon-group">
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/dashboard/community")}
+        >
           <img src={community} alt="Community Icon" />
           <span>Community</span>
         </div>
-        <div className="icon-group"onClick={() => navigate("/homepage/Notifications")}>
+        <div
+          className="icon-group"
+          onClick={() => handleNavigation("/homepage/Notifications")}
+        >
           <img src={bell} alt="Notification Icon" />
           <span>Notification</span>
         </div>
