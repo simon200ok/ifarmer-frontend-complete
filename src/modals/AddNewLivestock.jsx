@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-import TagInput from "./tagInput";
+// import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
 

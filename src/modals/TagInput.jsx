@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./TagInput.css";
 
 const TagInput = ({ placeholder }) => {
@@ -47,11 +47,7 @@ const TagInput = ({ placeholder }) => {
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <button
-        type="button"
-        className="add-button"
-        onClick={addTag}
-      >
+      <button type="button" className="add-button" onClick={addTag}>
         + Add
       </button>
     </div>
