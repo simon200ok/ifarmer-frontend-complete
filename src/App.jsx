@@ -15,6 +15,9 @@ import HomePageLayout from "./pages/HomePageLayout";
 import Post from "./pages/Post";
 import Dashboard from "./pages/Admin-Dashboard/Dashboard";
 import Settings from "./pages/Admin-Dashboard/Settings";
+import LivestockPage from "./pages/LivestockPage";
+import EditLivestock from "./pages/EditLivestock";
+import AnalyticsDashboard from "./pages/Admin-Dashboard/AnalyticsDashboard";
 
 function App() {
   const router = createBrowserRouter([
@@ -50,6 +53,14 @@ function App() {
           element: <CropPage />,
         },
         {
+          path: "/homepage/livestock",
+          element: <LivestockPage />,
+        },
+        {
+          path: "/homepage/update-livestock/:id",
+          element: <EditLivestock />,
+        },
+        {
           path: "settings",
           element: <Settings />,
         },
@@ -78,6 +89,10 @@ function App() {
         {
           path: "/admin/settings",
           element: <Settings />,
+        },
+        {
+          path: "/admin/analytics",
+          element: <AnalyticsDashboard />,
         },
       ],
     },

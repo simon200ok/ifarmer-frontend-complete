@@ -99,8 +99,8 @@ function CropPage() {
             {getCurrentGreeting()}, {firstName}
           </h1>
         </div>
-        <div className="background">
-          <div className="green">
+        <div className="backgrounds">
+          <div className="greens">
             <h1>Manage Your Crops</h1>
             <div className="crop">
               <div className="total">
@@ -108,7 +108,7 @@ function CropPage() {
                 <p>{getCropCountText(cropStatusCounts.TOTAL)}</p>
               </div>
               <div className="total">
-                <h1>Mature Crops</h1>
+                <h1>Growing Crops</h1>
                 <p>{getCropCountText(cropStatusCounts.GROWING)}</p>
               </div>
               <div className="total">

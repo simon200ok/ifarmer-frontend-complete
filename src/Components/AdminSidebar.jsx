@@ -27,7 +27,7 @@ function AdminSidebar() {
           <img src={user} alt="User icon" />
           <span>User Database</span>
         </div>
-        <div className="iconGroup">
+        <div className="iconGroup" onClick={() => navigate("/admin/analytics")}>
           <img src={analytics} alt="Analytics Icon" />
           <span>User Analytics</span>
         </div>

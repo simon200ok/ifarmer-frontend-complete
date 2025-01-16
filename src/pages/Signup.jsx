@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import LeftPane from "../Components/LeftPane";
 import "./Login.css";
@@ -19,9 +21,7 @@ function Signup() {
     role: "",
   });
 
-  const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,69 +30,38 @@ function Signup() {
       ...formData,
       [name]: value,
     });
-
-    // Clear errors on input change
-    setFormError("");
   };
 
-  // Password validation
   const isValidPassword = (password) => {
     const passwordRegex = /^(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
     return passwordRegex.test(password);
   };
 
   const validateForm = () => {
-    let formIsValid = true;
-    let newErrors = {};
-
-    if (!formData.firstName) {
-      newErrors.firstName = "First name is required";
-      formIsValid = false;
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.userName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.businessName ||
+      !formData.gender ||
+      !formData.role
+    ) {
+      toast.error("All fields are required.");
+      return false;
     }
-
-    if (!formData.lastName) {
-      newErrors.lastName = "Last name is required";
-      formIsValid = false;
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      toast.error("Email is not valid.");
+      return false;
     }
-
-    if (!formData.userName) {
-      newErrors.userName = "Username is required";
-      formIsValid = false;
+    if (!isValidPassword(formData.password)) {
+      toast.error(
+        "Password must be at least 8 characters and include one special character."
+      );
+      return false;
     }
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-      formIsValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is not valid";
-      formIsValid = false;
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-      formIsValid = false;
-    } else if (!isValidPassword(formData.password)) {
-      newErrors.password =
-        "Password must be at least 8 characters and include one special character";
-      formIsValid = false;
-    }
-
-    if (!formData.businessName) {
-      newErrors.businessName = "Business name is required";
-      formIsValid = false;
-    }
-
-    if (!formData.gender) {
-      newErrors.gender = "Gender is required";
-      formIsValid = false;
-    }
-
-    if (!formData.role) {
-      newErrors.role = "Role is required";
-      formIsValid = false;
-    }
-
-    return formIsValid;
+    return true;
   };
 
   const handleSubmit = async (e) => {
@@ -101,10 +70,11 @@ function Signup() {
       return;
     }
 
+    setLoading(true);
     const { gender, role, ...bodyData } = formData;
 
     try {
-      console.log("Submitting form data:", formData);
+      // eslint-disable-next-line no-unused-vars
       const response = await axios.post(
         `http://localhost:8080/api/v1/auth/register?gender=${gender}&role=${role}`,
         bodyData,
@@ -114,24 +84,26 @@ function Signup() {
           },
         }
       );
-      navigate("/login");
-      console.log("Registration successful!", response.data);
+
+      toast.success("Registration successful!");
+
+      // Delay navigation to allow the user to see the success message
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000); // 3-second delay
     } catch (error) {
       if (error.response) {
         const { responseCode, responseMessage } = error.response.data;
-        console.error(`Error response data: ${responseMessage}`);
-
         if (
           responseCode === "400" &&
           responseMessage.includes("Email already exists")
         ) {
-          setFormError("Email already exists, kindly log into your account.");
+          toast.error("Email already exists, kindly log into your account.");
         } else {
-          setFormError("An unexpected error occurred. Please try again later.");
+          toast.error("An unexpected error occurred. Please try again later.");
         }
       } else {
-        console.error("Registration failed.", error.message);
-        setFormError(
+        toast.error(
           "An unexpected error occurred. Please check your network connection and try again."
         );
       }
@@ -139,16 +111,16 @@ function Signup() {
       setLoading(false);
     }
   };
+
   return (
     <div className="wrapper">
       <div className="container">
         <LeftPane message="Welcome to Ifarmr" />
         <div className="right">
-          <div className="logo">
+          <div className="logo" onClick={() => navigate("/")}>
             <img src={logo} alt="logo" />
           </div>
           <form onSubmit={handleSubmit}>
-            {formError && <p className="error form-error">{formError}</p>}
             <div className="formGroup">
               <label htmlFor="fname">First Name</label>
               <input
@@ -256,6 +228,7 @@ function Signup() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

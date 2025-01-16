@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Link } from "react-router";
+
 import "./LandingPage.css";
 
 import vectorStar from "../assets/images/Vector.png";

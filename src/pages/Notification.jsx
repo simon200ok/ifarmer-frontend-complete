@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './NotificationPage.css';
-import LeftPane from "../Components/LeftPane";
+import "./NotificationPage.css";
+// import LeftPane from "../Components/LeftPane";
 
 const getAuthToken = () => {
   return localStorage.getItem("token");
@@ -18,17 +18,20 @@ function NotificationPage() {
       return;
     }
 
-    axios.get("http://localhost:8080/api/get-notifications-by-user", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    })
-      .then(response => {
+    axios
+      .get("http://localhost:8080/api/get-notifications-by-user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
         setNotifications(response.data);
-        const unreadNotifications = response.data.filter(notification => notification.status === "UNREAD");
+        const unreadNotifications = response.data.filter(
+          (notification) => notification.status === "UNREAD"
+        );
         setUnreadCount(unreadNotifications.length);
       })
-      .catch(error => console.error("Error fetching notifications:", error));
+      .catch((error) => console.error("Error fetching notifications:", error));
   }, []);
 
   const markNotificationAsRead = (notificationId) => {
@@ -38,28 +41,38 @@ function NotificationPage() {
       return;
     }
 
-    axios.patch(`http://localhost:8080/api/read?notificationId=${notificationId}`, {}, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    })
+    axios
+      .patch(
+        `http://localhost:8080/api/read?notificationId=${notificationId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(() => {
-        setNotifications(prevNotifications =>
-          prevNotifications.map(notification =>
+        setNotifications((prevNotifications) =>
+          prevNotifications.map((notification) =>
             notification.notificationId === notificationId
-              ? { ...notification, status: 'READ' }
+              ? { ...notification, status: "READ" }
               : notification
           )
         );
-        setUnreadCount(prevCount => prevCount - 1);
+        setUnreadCount((prevCount) => prevCount - 1);
       })
-      .catch(error => console.error("Error marking notification as read:", error));
+      .catch((error) =>
+        console.error("Error marking notification as read:", error)
+      );
   };
 
   return (
     <div className="notification-container">
       <div className="notification-header">
-        <i className="fas fa-bell bell-icon" style={{ color: unreadCount > 0 ? "green" : "gray" }}></i>
+        <i
+          className="fas fa-bell bell-icon"
+          style={{ color: unreadCount > 0 ? "green" : "gray" }}
+        ></i>
         <span>Notifications</span>
         {unreadCount > 0 && (
           <span className="notification-count">{unreadCount}</span>
@@ -72,8 +85,12 @@ function NotificationPage() {
             {notifications.map((notification, index) => (
               <li
                 key={notification.notificationId}
-                className={`notification-item ${notification.status === "UNREAD" ? "unread" : "read"}`}
-                onClick={() => markNotificationAsRead(notification.notificationId)} // Mark as read when clicked
+                className={`notification-item ${
+                  notification.status === "UNREAD" ? "unread" : "read"
+                }`}
+                onClick={() =>
+                  markNotificationAsRead(notification.notificationId)
+                } // Mark as read when clicked
               >
                 <div className="notification-number">
                   {index + 1}. {/* Display the number */}
