@@ -1,74 +1,90 @@
 /* Container */
 .notification-container {
   padding: 30px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  max-width: 600px;
+  background-color: #f0f4f8; /* Lighter background for a cleaner look */
+  border-radius: 12px;
+  max-width: 650px;
+  width: 100%; /* Ensure it uses the full available width */
   margin-left: 20px;  /* Align the container to the left */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 80vh; /* Set the height to be a percentage of the viewport */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Header */
 .notification-header {
   display: flex;
   align-items: center;
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #eaeaea;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #e0e0e0;
+  color: #333;
 }
 
 .notification-header i {
-  margin-right: 10px;
+  margin-right: 15px;
+  font-size: 26px;
+  color: #4CAF50; /* Slightly darker green for bell */
 }
 
 .notification-count {
-  background-color: green;
+  background-color: #4CAF50;
   color: white;
   border-radius: 50%;
-  padding: 5px 12px;
-  margin-left: 10px;
-  font-size: 14px;
+  padding: 8px 14px;
+  margin-left: 15px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* Notification List */
 .notification-list {
+  flex-grow: 1; /* Allow the list to take up the remaining space */
   margin-top: 20px;
   padding: 20px;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
+  overflow-y: auto;   /* Enables vertical scrolling */
+  scrollbar-width: thin; /* Make the scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* Custom scrollbar colors */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Notification Item */
 .notification-item {
   display: flex;
   align-items: flex-start;
-  padding: 15px;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
   flex-wrap: wrap; /* Allow content to wrap */
 }
 
 .notification-item.unread {
-  background-color: #d4f7d4; /* Light green for unread notifications */
+  background-color: #e7f7e7; /* Light green for unread notifications */
 }
 
 .notification-item.read {
-  background-color: #f9f9f9; /* Light gray for read notifications */
+  background-color: #f4f4f4; /* Light gray for read notifications */
 }
 
 .notification-item:hover {
-  background-color: #eaeaea; /* Hover effect */
+  background-color: #f1f1f1; /* Hover effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Notification Number */
 .notification-number {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   color: #333;
-  margin-right: 15px;
+  margin-right: 20px;
   flex-shrink: 0; /* Prevent it from shrinking */
 }
 
@@ -78,14 +94,15 @@
 }
 
 .notification-message {
-  font-size: 14px;
+  font-size: 15px;
   color: #555;
+  line-height: 1.5;
 }
 
 .notification-timestamp {
-  font-size: 12px;
+  font-size: 13px;
   color: #aaa;
-  margin-top: 5px;
+  margin-top: 8px;
   white-space: nowrap; /* Prevent timestamp from breaking onto a new line */
 }
 
@@ -93,14 +110,19 @@
 @media (max-width: 768px) {
   .notification-container {
     padding: 20px;
-    margin-left: 20px;  /* Adjust left margin on small screens */
+    margin-left: 15px;  /* Adjust left margin on small screens */
   }
 
   .notification-header {
-    font-size: 20px;
+    font-size: 22px;
+    margin-bottom: 20px;
   }
 
   .notification-list {
     padding: 15px;
+  }
+
+  .notification-item {
+    padding: 12px;
   }
 }
