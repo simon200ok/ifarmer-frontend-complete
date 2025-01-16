@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+
 import "./LandingPage.css";
 
 import vectorStar from "../assets/images/Vector.png";
@@ -312,16 +312,16 @@ function LandingPage() {
               experts.
             </p>
             <div className="social-icons">
-              <div className="icons">
+              <div className="iconss">
                 <img src={instagram} alt="Instagram" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={pinterest} alt="Pinterest" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={facebook} alt="Facebook" />
               </div>
-              <div className="icons">
+              <div className="iconss">
                 <img src={behance} alt="Behance" />
               </div>
             </div>
