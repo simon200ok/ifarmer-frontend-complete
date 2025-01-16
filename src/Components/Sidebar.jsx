@@ -74,7 +74,10 @@ function Sidebar() {
           <img src={settings} alt="Settings Icon" />
           <span>Settings</span>
         </div>
-        <div className="icon-group">
+        <div
+          className="icon-group"
+          onClick={() => navigate("/dashboard/community")}
+        >
           <img src={community} alt="Community Icon" />
           <span>Community</span>
         </div>

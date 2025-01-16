@@ -11,7 +11,8 @@ import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
 import UserPage from "./pages/Admin-Dashboard/UserPage";
 import UserDashboardLayout from "./pages/UserDashboardLayout";
 import CropPage from "./pages/CropPage";
-
+import HomePageLayout from "./pages/HomePageLayout";
+import Post from "./pages/Post";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,16 @@ function App() {
     {
       path: "/signup",
       element: <Signup />,
+    },
+    {
+      path: "/dashboard",
+      element: <HomePageLayout />,
+      children: [
+        {
+          path: "/dashboard/community",
+          element: <Post />,
+        },
+      ],
     },
     {
       path: "/homepage",

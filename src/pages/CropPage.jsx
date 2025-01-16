@@ -39,7 +39,10 @@ function CropPage() {
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/crops/status-count", {
+    const statusCountApi = "http://localhost:8080/api/v1/crops/status-count";
+    console.log("Fetching crop status counts from:", statusCountApi);
+
+    fetch(statusCountApi, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,16 +64,17 @@ function CropPage() {
         console.error("Error fetching crop status counts:", error)
       );
 
-    fetch(
-      "http://localhost:8080/api/v1/crops/statistics/get_all_crops_by_user",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    const allCropsApi =
+      "http://localhost:8080/api/v1/crops/statistics/get_all_crops_by_user";
+    console.log("Fetching all crops from:", allCropsApi);
+
+    fetch(allCropsApi, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.success && Array.isArray(data.responseData)) {
