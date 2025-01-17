@@ -8,7 +8,7 @@
   justify-content: center;
 }
 
-.modal {
+.modal-e {
   position: fixed;
   inset: 0;
   display: flex;
@@ -18,7 +18,7 @@
   backdrop-filter: blur(4px);
 }
 
-.xButton {
+.xButton-e {
   background: none;
   border: none;
   cursor: pointer;
@@ -26,7 +26,7 @@
   color: grey;
 }
 
-form {
+.form-e {
   background-color: white;
   border-radius: 20px;
   padding: 20px;
@@ -36,7 +36,7 @@ form {
   border: 1px solid #ccc;
 }
 
-form>.div-field {
+.form-e>.div-field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -44,15 +44,15 @@ form>.div-field {
   margin-bottom: 15px;
 }
 
-form h4 {
+.form-e h4 {
   margin: 0;
   flex: 1;
   font-weight: lighter;
 }
 
-form input,
-form textarea,
-form select {
+.form-e input,
+.form-e textarea,
+.form-e select {
   flex: 2;
   padding: 10px;
   font-size: 14px;
@@ -71,7 +71,7 @@ form select {
 }
 
 
-form input[type="file"]::file-selector-button {
+.form-e input[type="file"]::file-selector-button {
   background-color: red;
   color: white;
   border: none;
@@ -81,17 +81,17 @@ form input[type="file"]::file-selector-button {
 }
 
 
-form textarea {
+.form-e textarea {
   resize: vertical;
 }
 
-.buttonContainer {
+.buttonContainer-e {
   display: flex;
   justify-content: flex-end;
   margin-top: 50px;
 }
 
-form button {
+/* form button {
   background-color: rgb(3, 77, 3);
   color: white;
   border: none;
@@ -100,7 +100,7 @@ form button {
   border-radius: 10px;
   cursor: pointer;
   align-self: flex-end;
-}
+} */
 
 .photo-upload-input-container {
   position: relative;

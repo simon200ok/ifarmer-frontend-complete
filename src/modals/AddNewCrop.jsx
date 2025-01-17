@@ -150,11 +150,11 @@ const AddNewCrop = ({ onClose }) => {
   };
 
   return (
-    <div className="modal">
-      <form onSubmit={handleSubmit}>
+    <div className="modal-e">
+      <form className="form-e" onSubmit={handleSubmit}>
         <div className="div-field">
           <h4>Add New Crop</h4>
-          <button type="button" onClick={onClose} className="xButton" >
+          <button type="button" onClick={onClose} className="xButton-e" >
             <X />
           </button>
         </div>
@@ -278,7 +278,7 @@ const AddNewCrop = ({ onClose }) => {
           ></textarea>
         </div>
 
-        <div className="buttonContainer">
+        <div className="buttonContainer-e">
           <button type="submit">Save Changes</button>
         </div>
       </form>

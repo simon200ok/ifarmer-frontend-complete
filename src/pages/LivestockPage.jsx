@@ -34,7 +34,6 @@ function LivestockPage() {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
-    localStorage.setItem("token", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvam9pbW1hbnVlbEBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTczNjkyODM4MSwiZXhwIjoxNzM3MDE0NzgxfQ.6XbezD1RWWf0LGyFu8e26qw9eTQq57RrRenvMROjm3Ekl6E7BJ8vik3V-JYzRLPZT_hql0rPG3LtV2QuRLtYXQ");
     const token = localStorage.getItem("token");
     const storedFirstName = localStorage.getItem("firstName");
 
