@@ -58,7 +58,8 @@ import AdminLayout from "./pages/Admin-Dashboard/AdminLayout";
 import UserPage from "./pages/Admin-Dashboard/UserPage";
 import UserDashboardLayout from "./pages/UserDashboardLayout";
 import CropPage from "./pages/CropPage";
-
+import Dashboard from "./pages/Admin-Dashboard/Dashboard";
+import Settings from "./pages/Admin-Dashboard/Settings";
 import ForgotPassword from "./pages/ForgotPassword";
 import ProfileModal from "./pages/UpdateProfile";
 
@@ -85,16 +86,20 @@ function App() {
           path: "/homepage/crops",
           element: <CropPage />,
         },
+        {
+          path: "settings",
+          element: <Settings />,
+        },
+        {
+          path: "notifications",
+          element: <Notification />,
+        },
       ],
     },
     // {
     //   path: "/forgotpassword",
     //   element: <ForgetPasswordMum />,
     // },
-    {
-      path: "/notifications",
-      element: <Notification />,
-    },
     {
       path: "/admin",
       element: <AdminLayout />,
@@ -103,7 +108,23 @@ function App() {
           path: "/admin/users",
           element: <UserPage />,
         },
+        {
+          path: "/admin",
+          element: <Dashboard />,
+        },
+        {
+          path: "/admin/settings",
+          element: <Settings />,
+        },
       ],
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPassword />,
+    },
+    {
+      path: "/updateprofile",
+      element: <ProfileModal />,
     },
     {
       path: "/forgot-password",

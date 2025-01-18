@@ -1,0 +1,145 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  width: 100%;
+  max-width: 1000px;
+  gap: 60px;
+}
+
+.greetings {
+  align-self: flex-start; /* Align to top left */
+}
+
+.greetings h1 {
+  color: #1e1e1e;
+  font-size: 16px;
+}
+
+.background {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  background-color: #C0F196;
+  padding: 20px;
+  border-radius: 16px;
+  
+  align-items: center;
+  width: 773px;
+  height: 223px;
+}
+
+.crop-image img {
+  width: 220px;
+  margin-left: 120px;
+}
+
+.green h1 {
+  font-size: 23px;
+  color: #2F580F;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.green {
+  width: Hug(257px);
+  height: Hug(135px);
+  top: 25px;
+  left: 50.56px;
+  gap: 12px;
+}
+
+.green1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+.green1 h1 {
+  font: Raleway;
+  font-size: 16px;
+  color: #00563E;
+  font-weight: 500px;
+  line-height: 18.78px;
+}
+
+
+.new-registrations {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px; /* Reduced margin to decrease the space */
+}
+
+.total-info {
+  display: flex;
+  gap: 20px; /* Adds space between the Total Users and Active Users sections */
+  margin-bottom: 10px; /* Reduced space below the two sections */
+}
+
+.total-info .total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.charts-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  top: 355px;
+  width: Hug(774px);
+  height: Hug(380px);
+  gap: 62px;
+}
+
+.chart-item h3 {
+  font-size: 16px;
+  color: #2f580f;
+  font-weight: 500;
+}
+
+.chart-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+.frame{
+  width: Fixed(773);
+  height: Hug(268);
+  top: 50px;
+  left: 266px;
+  gap: 24px;
+}
+@media (max-width: 768px) {
+  .dashboard-container {
+    margin-top: 10px; /* Reduce top margin for smaller screens */
+  }
+
+  .background {
+    grid-template-columns: 1fr; /* Stack image and content on smaller screens */
+    margin-top: 1rem; /* Ensure consistent spacing */
+  }
+
+  .charts-section {
+    grid-template-columns: 1fr; /* Stack charts on smaller screens */
+  }
+
+  .chart-item {
+    width: 100%; /* Make chart items take up full width */
+    max-width: none; /* Remove max-width for responsiveness */
+  }
+
+  .total-info {
+    flex-direction: column; /* Stack total sections vertically on smaller screens */
+    align-items: flex-start;
+  }
+
+  .total-info .total {
+    align-items: flex-start;
+  }
+}
