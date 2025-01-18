@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
+import { useNavigate } from "react-router";
 
 const AddNewCrop = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -73,6 +74,8 @@ const AddNewCrop = ({ onClose }) => {
     SEEDLING_STAGE: "Seedling Stage",
   };
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -138,7 +141,10 @@ const AddNewCrop = ({ onClose }) => {
       });
 
       if (response.ok) {
+        navigate("/homepage/crops");
+
         alert("Crop data saved successfully!");
+        // navigate("/homepage/crops");
       } else {
         alert("Failed to save crop data, please check fields.");
       }

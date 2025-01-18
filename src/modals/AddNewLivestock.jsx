@@ -3,6 +3,8 @@ import { X } from "lucide-react";
 import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
+import { useNavigate } from "react-router";
+
 
 // eslint-disable-next-line react/prop-types
 const AddNewLivestock = ({ onClose }) => {
@@ -60,6 +62,8 @@ const AddNewLivestock = ({ onClose }) => {
     EVERY_FRIDAY: "Every Friday",
     TWICE_A_WEEK: "Twice a week",
   };
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -119,7 +123,8 @@ const AddNewLivestock = ({ onClose }) => {
 
       if (response.ok) {
         alert("Livestock data saved successfully!");
-        // navigate("/");
+        navigate("/homepage/livestock");
+
       } else {
         alert("Failed to save livestock data, please check fields.");
       }
