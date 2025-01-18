@@ -28,11 +28,11 @@ const EditTagInput = ({ placeholder }) => {
   return (
     <div className="tag-input-container-edit">
       {tags.map((tag, index) => (
-        <div className="tag" key={index}>
+        <div className="tag-edit" key={index}>
           {tag}
           <button
             type="button"
-            className="remove-tag"
+            className="remove-tag-edit"
             onClick={() => removeTag(index)}
           >
             &times;
@@ -41,7 +41,7 @@ const EditTagInput = ({ placeholder }) => {
       ))}
       <input
         type="text"
-        className="tag-input"
+        className="tag-input-edit"
         placeholder={placeholder || "Enter a tag"}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -49,7 +49,7 @@ const EditTagInput = ({ placeholder }) => {
       />
       <button
         type="button"
-        className="add-button"
+        className="add-button-edit"
         onClick={addTag}
       >
         + Add

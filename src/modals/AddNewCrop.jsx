@@ -149,211 +149,214 @@ const AddNewCrop = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-e">
-      <form className="form-e" onSubmit={handleSubmit}>
-        <div className="div-field">
-          <h4>Add New Crop</h4>
-          <button type="button" onClick={onClose} className="xButton-e">
-            <X />
-          </button>
-        </div>
+    <div className="modal-overlay-e">
 
-        <div className="div-field">
-          <h4>Crop Name</h4>
-          <input
-            type="text"
-            name="cropName"
-            value={formData.cropName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <div className="modal-e">
+        <form className="form-e" onSubmit={handleSubmit}>
+          <div className="div-field">
+            <h4>Add New Crop</h4>
+            <button type="button" onClick={onClose} className="xButton-e">
+              <X />
+            </button>
+          </div>
 
-        <div className="div-field">
-          <h4>Crop Type</h4>
-          <select
-            name="cropType"
-            value={formData.cropType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Crop Type</option>
-            {Object.entries(cropTypeOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Crop Name</h4>
+            <input
+              type="text"
+              name="cropName"
+              value={formData.cropName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Planting Season</h4>
-          <select
-            name="plantingSeason"
-            value={formData.plantingSeason}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Season</option>
-            {Object.entries(plantingSeasonOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="div-field">
-          <h4>Sow Date</h4>
-          <input
-            type="date"
-            name="sowDate"
-            value={formData.sowDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="div-field">
-          <h4>Harvest Date</h4>
-          <input
-            type="date"
-            name="harvestDate"
-            value={formData.harvestDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="div-field">
-          <h4>Number of Seedlings</h4>
-          <input
-            type="number"
-            name="numberOfSeedlings"
-            min="0"
-            value={formData.numberOfSeedlings}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="div-field">
-          <h4>Cost of Seedlings</h4>
-          <input
-            type="number"
-            name="costOfSeedlings"
-            min="0"
-            value={formData.costOfSeedlings}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="div-field">
-          <h4>Watering Frequency</h4>
-          <select
-            name="wateringFrequency"
-            value={formData.wateringFrequency}
-            onChange={handleChange}
-            required
-          >
-            {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="div-field">
-          <h4>Fertilizing Frequency</h4>
-          <select
-            name="fertilizingFrequency"
-            value={formData.fertilizingFrequency}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Frequency</option>
-            {Object.entries(fertilizingFrequencyOptions).map(
-              ([value, label]) => (
+          <div className="div-field">
+            <h4>Crop Type</h4>
+            <select
+              name="cropType"
+              value={formData.cropType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Crop Type</option>
+              {Object.entries(cropTypeOptions).map(([value, label]) => (
                 <option key={value} value={value}>
                   {label}
                 </option>
-              )
-            )}
-          </select>
-        </div>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Pests and Diseases</h4>
-          <TagInput
-            tags={formData.pestsAndDiseases}
-            setTags={handleTagsChange}
-          />
-        </div>
+          <div className="div-field">
+            <h4>Planting Season</h4>
+            <select
+              name="plantingSeason"
+              value={formData.plantingSeason}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Season</option>
+              {Object.entries(plantingSeasonOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Quantity</h4>
-          <input
-            type="text"
-            name="quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Sow Date</h4>
+            <input
+              type="date"
+              name="sowDate"
+              value={formData.sowDate}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Location</h4>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Harvest Date</h4>
+            <input
+              type="date"
+              name="harvestDate"
+              value={formData.harvestDate}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Status</h4>
-          <select
-            name="cropStatus"
-            value={formData.cropStatus}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Crop Status</option>
-            {Object.entries(cropStatusOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Number of Seedlings</h4>
+            <input
+              type="number"
+              name="numberOfSeedlings"
+              min="0"
+              value={formData.numberOfSeedlings}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Photo Upload</h4>
-          <PhotoUploadInput
-            formData={{ photo: formData.photo }}
-            setFormData={(updatedFormData) =>
-              handlePhotoUploadChange(updatedFormData.photo)
-            }
-          />
-        </div>
+          <div className="div-field">
+            <h4>Cost of Seedlings</h4>
+            <input
+              type="number"
+              name="costOfSeedlings"
+              min="0"
+              value={formData.costOfSeedlings}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Description</h4>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          ></textarea>
-        </div>
+          <div className="div-field">
+            <h4>Watering Frequency</h4>
+            <select
+              name="wateringFrequency"
+              value={formData.wateringFrequency}
+              onChange={handleChange}
+              required
+            >
+              {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="buttonContainer-e">
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
+          <div className="div-field">
+            <h4>Fertilizing Frequency</h4>
+            <select
+              name="fertilizingFrequency"
+              value={formData.fertilizingFrequency}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Frequency</option>
+              {Object.entries(fertilizingFrequencyOptions).map(
+                ([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+
+          <div className="div-field">
+            <h4>Pests and Diseases</h4>
+            <TagInput
+              tags={formData.pestsAndDiseases}
+              setTags={handleTagsChange}
+            />
+          </div>
+
+          <div className="div-field">
+            <h4>Quantity</h4>
+            <input
+              type="text"
+              name="quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="div-field">
+            <h4>Location</h4>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="div-field">
+            <h4>Status</h4>
+            <select
+              name="cropStatus"
+              value={formData.cropStatus}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Crop Status</option>
+              {Object.entries(cropStatusOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="div-field">
+            <h4>Photo Upload</h4>
+            <PhotoUploadInput
+              formData={{ photo: formData.photo }}
+              setFormData={(updatedFormData) =>
+                handlePhotoUploadChange(updatedFormData.photo)
+              }
+            />
+          </div>
+
+          <div className="div-field">
+            <h4>Description</h4>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            ></textarea>
+          </div>
+
+          <div className="buttonContainer-e">
+            <button type="submit">Save Changes</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-// import TagInput from "./tagInput";
+import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
 
@@ -130,178 +130,180 @@ const AddNewLivestock = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-e">
-      <form className="form-e" onSubmit={handleSubmit}>
-        <div className="div-field">
-          <h4>Add New Livestock</h4>
-          <button type="button" onClick={onClose} className="xButton-e">
-            <X />
-          </button>
-        </div>
+    <div className="modal-overlay-e">
+      <div className="modal-e">
+        <form className="form-e" onSubmit={handleSubmit}>
+          <div className="div-field">
+            <h4>Add New Livestock</h4>
+            <button type="button" onClick={onClose} className="xButton-e">
+              <X />
+            </button>
+          </div>
 
-        <div className="div-field">
-          <h4>Animal Name</h4>
-          <input
-            type="text"
-            name="animalName"
-            value={formData.animalName}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Animal Name</h4>
+            <input
+              type="text"
+              name="animalName"
+              value={formData.animalName}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Animal Type</h4>
-          <select
-            name="animalType"
-            value={formData.animalType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Animal Type</option>
-            {Object.entries(animalTypeOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Animal Type</h4>
+            <select
+              name="animalType"
+              value={formData.animalType}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Animal Type</option>
+              {Object.entries(animalTypeOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Breed</h4>
-          <input
-            type="text"
-            name="breed"
-            value={formData.breed}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Breed</h4>
+            <input
+              type="text"
+              name="breed"
+              value={formData.breed}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Quantity</h4>
-          <input
-            type="number"
-            name="quantity"
-            min="0"
-            value={formData.quantity}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Quantity</h4>
+            <input
+              type="number"
+              name="quantity"
+              min="0"
+              value={formData.quantity}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Age</h4>
-          <input
-            type="text"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Age</h4>
+            <input
+              type="text"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Location</h4>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Location</h4>
+            <input
+              type="text"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Animal Status</h4>
-          <select
-            name="animalStatus"
-            value={formData.animalStatus}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Animal Status</option>
-            {Object.entries(animalStatusOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Animal Status</h4>
+            <select
+              name="animalStatus"
+              value={formData.animalStatus}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Animal Status</option>
+              {Object.entries(animalStatusOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Feeding Schedule</h4>
-          <select
-            name="feedingSchedule"
-            value={formData.feedingSchedule}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Feeding Schedule</option>
-            {Object.entries(feedingScheduleOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Feeding Schedule</h4>
+            <select
+              name="feedingSchedule"
+              value={formData.feedingSchedule}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Feeding Schedule</option>
+              {Object.entries(feedingScheduleOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Watering Frequency</h4>
-          <select
-            name="wateringFrequency"
-            value={formData.wateringFrequency}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Watering Frequency</option>
-            {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
-              <option key={value} value={value}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="div-field">
+            <h4>Watering Frequency</h4>
+            <select
+              name="wateringFrequency"
+              value={formData.wateringFrequency}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Watering Frequency</option>
+              {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
+                <option key={value} value={value}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="div-field">
-          <h4>Vaccination Schedule</h4>
-          <input
-            type="date"
-            name="vaccinationSchedule"
-            value={formData.vaccinationSchedule}
-            onChange={handleChange}
-            required
-          />
-        </div>
+          <div className="div-field">
+            <h4>Vaccination Schedule</h4>
+            <input
+              type="date"
+              name="vaccinationSchedule"
+              value={formData.vaccinationSchedule}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Health Issues</h4>
-          <TagInput tags={formData.healthIssues} setTags={handleTagsChange} />
-        </div>
+          <div className="div-field">
+            <h4>Health Issues</h4>
+            <TagInput tags={formData.healthIssues} setTags={handleTagsChange} />
+          </div>
 
-        <div className="div-field">
-          <h4>Photo Upload</h4>
-          <PhotoUploadInput
-            formData={{ photo: formData.photo }}
-            setFormData={(updatedFormData) =>
-              handlePhotoUploadChange(updatedFormData.photo)
-            }
-          />
-        </div>
+          <div className="div-field">
+            <h4>Photo Upload</h4>
+            <PhotoUploadInput
+              formData={{ photo: formData.photo }}
+              setFormData={(updatedFormData) =>
+                handlePhotoUploadChange(updatedFormData.photo)
+              }
+            />
+          </div>
 
-        <div className="div-field">
-          <h4>Description</h4>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          ></textarea>
-        </div>
+          <div className="div-field">
+            <h4>Description</h4>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            ></textarea>
+          </div>
 
-        <div className="buttonContainer-e">
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
+          <div className="buttonContainer-e">
+            <button type="submit">Save Changes</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

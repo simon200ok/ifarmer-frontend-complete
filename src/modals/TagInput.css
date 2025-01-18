@@ -16,6 +16,7 @@ TagInput.css * {
   background-color: #cccccc3d;
 }
 
+
 .tag {
   display: flex;
   flex-direction: row;
@@ -23,16 +24,27 @@ TagInput.css * {
   background-color: #e6f4e6;
   color: #000;
   border: 1px solid #6fbf73;
-  border-radius: 20px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 24px;
+  padding: -10px;
+
 }
+
+
 
 .tag button.remove-tag {
   background: none;
   border: none;
   color: #6fbf73;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: lighter;
+  font-size: 3rem;
+  margin-right: -40px;
+  margin-left: -30px;
+  margin-top: -20px;
+  margin-bottom: -10px;
+
+
 }
 
 .tag-input {
@@ -48,7 +60,6 @@ TagInput.css * {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
