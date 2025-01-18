@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import livestockImage from "../assets/livestock.png";
 import Arrow from "../assets/arrow.png";
 import LivestockUpcomingTask from "./LivestockUpcomingTask";
 import "./LivestockPage.css";
 import dots from "../assets/icons/dots.png";
-import AddNewLivestock from "../modals/AddNewLivestock"
+import AddNewLivestock from "../modals/AddNewLivestock";
 import { useNavigate } from "react-router";
-
 
 function LivestockPage() {
   const getCurrentGreeting = () => {
@@ -29,7 +28,6 @@ function LivestockPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
-
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
@@ -78,7 +76,8 @@ function LivestockPage() {
     navigate(`/homepage/update-livestock/${animalId}`);
   };
 
-  const capitalize = (str) => (str ? str.charAt(0).toUpperCase() + str.slice(1) : str);
+  const capitalize = (str) =>
+    str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 
   //   const formatDate = (date) => {
   //     const d = new Date(date);
@@ -88,13 +87,12 @@ function LivestockPage() {
   const formatDate = (dateArray) => {
     if (Array.isArray(dateArray) && dateArray.length >= 3) {
       const [year, month, day] = dateArray;
-      const formattedDay = day.toString().padStart(2, '0');
-      const formattedMonth = month.toString().padStart(2, '0');
+      const formattedDay = day.toString().padStart(2, "0");
+      const formattedMonth = month.toString().padStart(2, "0");
       return `${formattedDay}/${formattedMonth}/${year}`;
     }
     return "Invalid Date";
   };
-
 
   if (loading) {
     return <div>Loading dashboard...</div>;
@@ -150,7 +148,10 @@ function LivestockPage() {
             </thead>
             <tbody>
               {livestockData.map((data) => (
-                <tr key={data.animalId} onClick={() => handleRowClick(data.animalId)}>
+                <tr
+                  key={data.animalId}
+                  onClick={() => handleRowClick(data.animalId)}
+                >
                   <td>{capitalize(data.animalName)}</td>
                   <td>{data.quantity}</td>
                   <td>{capitalize(data.animalStatus)}</td>
@@ -164,11 +165,7 @@ function LivestockPage() {
             </tbody>
           </table>
         </div>
-        {isModalOpen && (
-          <AddNewLivestock
-            onClose={toggleModal}
-          />
-        )}
+        {isModalOpen && <AddNewLivestock onClose={toggleModal} />}
       </div>
       <LivestockUpcomingTask />
     </div>
@@ -176,4 +173,3 @@ function LivestockPage() {
 }
 
 export default LivestockPage;
-

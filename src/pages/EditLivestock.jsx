@@ -1,18 +1,16 @@
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./EditLivestock.css";
 import axios from "axios";
-import EditTagInput from "../modals/EditTagInput.jsx"
+import EditTagInput from "../modals/EditTagInput.jsx";
 import { useParams, useNavigate } from "react-router";
 import LivestockUpcomingTask from "./LivestockUpcomingTask.jsx";
 import BackArrow from "../assets/arrow-back.png";
 
 const EditLivestock = () => {
   const { id } = useParams();
-  const [livestock, setLivestock] = useState(null);
+  // const [livestock, setLivestock] = useState(null);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-
 
   const [formData, setFormData] = useState({
     animalName: "",
@@ -69,7 +67,6 @@ const EditLivestock = () => {
     TWICE_A_WEEK: "Twice a week",
   };
 
-
   const handleBack = () => {
     navigate("/homepage/livestock");
   };
@@ -92,7 +89,6 @@ const EditLivestock = () => {
 
     console.log("Form Data before conversion:", formData);
 
-
     const livestockData = JSON.stringify({
       animalName: formData.animalName,
       animalType: formData.animalType,
@@ -104,12 +100,13 @@ const EditLivestock = () => {
       feedingSchedule: formData.feedingSchedule,
       wateringFrequency: formData.wateringFrequency,
       vaccinationSchedule: formData.vaccinationSchedule,
-      healthIssues: Array.isArray(formData.healthIssues) ? formData.healthIssues.join(", ") : "",
+      healthIssues: Array.isArray(formData.healthIssues)
+        ? formData.healthIssues.join(", ")
+        : "",
       description: formData.description,
     });
 
     console.log("Livestock Data (JSON):", livestockData);
-
 
     data.append("data", livestockData);
     if (formData.photo) {
@@ -121,9 +118,7 @@ const EditLivestock = () => {
       console.log(`${key}:`, value);
     }
 
-
     try {
-
       const token = localStorage.getItem("token");
 
       if (!token) {
@@ -131,14 +126,16 @@ const EditLivestock = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:8080/api/v1/livestock/updateLivestock?animalId=${id}`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: data,
-      });
-
+      const response = await fetch(
+        `http://localhost:8080/api/v1/livestock/updateLivestock?animalId=${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: data,
+        }
+      );
 
       if (response.ok) {
         alert("Livestock data saved successfully!");
@@ -155,7 +152,6 @@ const EditLivestock = () => {
   };
 
   useEffect(() => {
-
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -163,15 +159,19 @@ const EditLivestock = () => {
       return;
     }
 
-
     const fetchLivestockData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/user/resources", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          "http://localhost:8080/api/user/resources",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         if (response.data) {
-          const selectedLivestock = response.data.responseData.livestock.find((item) => item.animalId === parseInt(id));
+          const selectedLivestock = response.data.responseData.livestock.find(
+            (item) => item.animalId === parseInt(id)
+          );
           setFormData({
             animalName: selectedLivestock.animalName || "",
             animalType: selectedLivestock.animalType || "",
@@ -196,13 +196,12 @@ const EditLivestock = () => {
     };
 
     fetchLivestockData();
-
   }, [id]);
 
-  const handleSave = () => {
-    console.log("Saved data:", formData);
-    navigate("/");
-  };
+  // const handleSave = () => {
+  //   console.log("Saved data:", formData);
+  //   navigate("/");
+  // };
 
   if (!formData) return <div>Loading...</div>;
 
@@ -215,7 +214,6 @@ const EditLivestock = () => {
               <img src={BackArrow} alt="arrow Icon" />
             </span>
             Back
-
           </button>
         </div>
         <div className="cattle-livestock">
@@ -339,11 +337,13 @@ const EditLivestock = () => {
               required
             >
               <option value="">Select Watering Frequency</option>
-              {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
+              {Object.entries(wateringFrequencyOptions).map(
+                ([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                )
+              )}
             </select>
           </div>
 
@@ -371,7 +371,7 @@ const EditLivestock = () => {
                 textAlign: "left",
                 boxSizing: "border-box",
                 flex: "2",
-                marginRight: "25%"
+                marginRight: "25%",
               }}
             />
           </div>
@@ -392,10 +392,8 @@ const EditLivestock = () => {
         </div>
       </div>
       <LivestockUpcomingTask />
-
     </div>
   );
 };
 
 export default EditLivestock;
-

@@ -19,7 +19,7 @@ function AdminSidebar() {
         <img src={logo} alt="logo" />
       </div>
       <div className="icons">
-        <div className="iconGroup">
+        <div className="iconGroup" onClick={() => navigate("/admin")}>
           <img src={dashboard} alt="dashboard icon" />
           <span>Dashboard</span>
         </div>
@@ -27,12 +27,12 @@ function AdminSidebar() {
           <img src={user} alt="User icon" />
           <span>User Database</span>
         </div>
-        <div className="iconGroup">
+        <div className="iconGroup" onClick={() => navigate("/admin/analytics")}>
           <img src={analytics} alt="Analytics Icon" />
           <span>User Analytics</span>
         </div>
         <p>Settings</p>
-        <div className="iconGroup">
+        <div className="iconGroup" onClick={() => navigate("/admin/settings")}>
           <img src={settings} alt="Settings Icon" />
           <span>Settings</span>
         </div>

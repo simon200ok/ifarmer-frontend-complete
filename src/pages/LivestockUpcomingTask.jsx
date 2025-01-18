@@ -6,9 +6,13 @@ import image4 from "../assets/random/image4.png";
 
 // import "./LivestockUpcomingTask.css";
 import "./UpcomingTask.css";
+import AddNewTask from "./AddNewTask";
 function LivestockUpcomingTask() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const icons = [image1, image2, image3, image4];
 
@@ -39,18 +43,16 @@ function LivestockUpcomingTask() {
   }, []);
 
   // uncomment to match with muminat's code aand comment the next code if issues
-  // const convertToISODate = (dateString) => {
-  //   const [day, month, year] = dateString.split("/");
-  //   return `${year}-${month}-${day}`;
-  // };
-
-
-  // comment this code and uncomment the above code block if issues
-  const convertToISODate = (dueDateArray) => {
-    const [year, month, day] = dueDateArray;
-    return new Date(year, month - 1, day);
+  const convertToISODate = (dateString) => {
+    const [day, month, year] = dateString.split("/");
+    return `${year}-${month}-${day}`;
   };
 
+  // comment this code and uncomment the above code block if issues
+  // const convertToISODate = (dueDateArray) => {
+  //   const [year, month, day] = dueDateArray;
+  //   return new Date(year, month - 1, day);
+  // };
 
   const calculateDaysLeft = (dueDate) => {
     const now = new Date();
@@ -84,7 +86,10 @@ function LivestockUpcomingTask() {
     <div className="task-wrapper">
       <div className="task-header">
         <h1>Upcoming Tasks</h1>
-        <p>New Task</p>
+        <p onClick={openModal} style={{ cursor: "pointer", color: "blue" }}>
+          <span>+</span>
+          New Task
+        </p>
       </div>
       <div className="task-list">
         {tasks.map((task) => (
@@ -104,6 +109,7 @@ function LivestockUpcomingTask() {
           </div>
         ))}
       </div>
+      {isModalOpen && <AddNewTask onClose={closeModal} />}
     </div>
   );
 }

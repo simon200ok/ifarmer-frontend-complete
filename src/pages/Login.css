@@ -13,15 +13,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh; /* Full height of the viewport */
 }
 
 .container {
   width: 70%;
-  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .right {

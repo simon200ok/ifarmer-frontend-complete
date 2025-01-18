@@ -1,12 +1,11 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
-import TagInput from "./tagInput";
+// import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
 
+// eslint-disable-next-line react/prop-types
 const AddNewLivestock = ({ onClose }) => {
-
   const [formData, setFormData] = useState({
     animalName: "",
     animalType: "",
@@ -22,7 +21,6 @@ const AddNewLivestock = ({ onClose }) => {
     description: "",
     photo: null,
   });
-
 
   const animalStatusOptions = {
     HEALTHY: "Healthy",
@@ -72,7 +70,6 @@ const AddNewLivestock = ({ onClose }) => {
     setFormData((prev) => ({ ...prev, photo: updatedPhoto }));
   };
 
-
   const handleTagsChange = (tags) => {
     setFormData({ ...formData, healthIssues: tags });
   };
@@ -109,18 +106,20 @@ const AddNewLivestock = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/v1/livestock/add", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: data,
-      });
+      const response = await fetch(
+        "http://localhost:8080/api/v1/livestock/add",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: data,
+        }
+      );
 
       if (response.ok) {
         alert("Livestock data saved successfully!");
         // navigate("/");
-
       } else {
         alert("Failed to save livestock data, please check fields.");
       }
@@ -142,12 +141,19 @@ const AddNewLivestock = ({ onClose }) => {
 
         <div className="div-field">
           <h4>Animal Name</h4>
-          <input type="text" name="animalName" value={formData.animalName} onChange={handleChange} required />
+          <input
+            type="text"
+            name="animalName"
+            value={formData.animalName}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
           <h4>Animal Type</h4>
-          <select name="animalType"
+          <select
+            name="animalType"
             value={formData.animalType}
             onChange={handleChange}
             required
@@ -163,27 +169,57 @@ const AddNewLivestock = ({ onClose }) => {
 
         <div className="div-field">
           <h4>Breed</h4>
-          <input type="text" name="breed" value={formData.breed} onChange={handleChange} required />
+          <input
+            type="text"
+            name="breed"
+            value={formData.breed}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
           <h4>Quantity</h4>
-          <input type="number" name="quantity" min="0" value={formData.quantity} onChange={handleChange} required />
+          <input
+            type="number"
+            name="quantity"
+            min="0"
+            value={formData.quantity}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
           <h4>Age</h4>
-          <input type="text" name="age" value={formData.age} onChange={handleChange} required />
+          <input
+            type="text"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
           <h4>Location</h4>
-          <input type="text" name="location" value={formData.location} onChange={handleChange} required />
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
           <h4>Animal Status</h4>
-          <select name="animalStatus" value={formData.animalStatus} onChange={handleChange} required>
+          <select
+            name="animalStatus"
+            value={formData.animalStatus}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Animal Status</option>
             {Object.entries(animalStatusOptions).map(([value, label]) => (
               <option key={value} value={value}>
@@ -195,7 +231,12 @@ const AddNewLivestock = ({ onClose }) => {
 
         <div className="div-field">
           <h4>Feeding Schedule</h4>
-          <select name="feedingSchedule" value={formData.feedingSchedule} onChange={handleChange} required>
+          <select
+            name="feedingSchedule"
+            value={formData.feedingSchedule}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Feeding Schedule</option>
             {Object.entries(feedingScheduleOptions).map(([value, label]) => (
               <option key={value} value={value}>
@@ -207,7 +248,12 @@ const AddNewLivestock = ({ onClose }) => {
 
         <div className="div-field">
           <h4>Watering Frequency</h4>
-          <select name="wateringFrequency" value={formData.wateringFrequency} onChange={handleChange} required>
+          <select
+            name="wateringFrequency"
+            value={formData.wateringFrequency}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Watering Frequency</option>
             {Object.entries(wateringFrequencyOptions).map(([value, label]) => (
               <option key={value} value={value}>
@@ -219,7 +265,13 @@ const AddNewLivestock = ({ onClose }) => {
 
         <div className="div-field">
           <h4>Vaccination Schedule</h4>
-          <input type="date" name="vaccinationSchedule" value={formData.vaccinationSchedule} onChange={handleChange} required />
+          <input
+            type="date"
+            name="vaccinationSchedule"
+            value={formData.vaccinationSchedule}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="div-field">
@@ -252,6 +304,6 @@ const AddNewLivestock = ({ onClose }) => {
       </form>
     </div>
   );
-}
+};
 
 export default AddNewLivestock;

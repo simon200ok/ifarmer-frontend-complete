@@ -5,9 +5,13 @@ import image3 from "../assets/random/image3.png";
 import image4 from "../assets/random/image4.png";
 
 import "./UpcomingTask.css";
+import AddNewTask from "./AddNewTask";
 function UpcomingTask() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const icons = [image1, image2, image3, image4];
 
@@ -73,7 +77,10 @@ function UpcomingTask() {
     <div className="task-wrapper">
       <div className="task-header">
         <h1>Upcoming Tasks</h1>
-        <p>New Task</p>
+        <p onClick={openModal} style={{ cursor: "pointer", color: "blue" }}>
+          <span>+</span>
+          New Task
+        </p>
       </div>
       <div className="task-list">
         {tasks.map((task) => (
@@ -93,6 +100,7 @@ function UpcomingTask() {
           </div>
         ))}
       </div>
+      {isModalOpen && <AddNewTask onClose={closeModal} />}
     </div>
   );
 }

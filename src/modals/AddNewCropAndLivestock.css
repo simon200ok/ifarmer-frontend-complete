@@ -36,7 +36,7 @@
   border: 1px solid #ccc;
 }
 
-.form-e>.div-field {
+.form-e > .div-field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -70,7 +70,6 @@
   background-color: #cccccc3d;
 }
 
-
 .form-e input[type="file"]::file-selector-button {
   background-color: red;
   color: white;
@@ -79,7 +78,6 @@
   padding: 10px 10px;
   cursor: pointer;
 }
-
 
 .form-e textarea {
   resize: vertical;
