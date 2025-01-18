@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
 import axios from "axios";
-import './Dashboard.css';
+import "./Dashboard.css";
 import Tomato from "../../assets/tomato.png";
 
 // Register all required components
@@ -46,12 +46,18 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const startOfWeekISO = getStartOfWeek();
-        const glanceResponse = await axios.get("http://localhost:8080/api/v1/admin/glance");
+        const glanceResponse = await axios.get(
+          "http://localhost:8080/api/v1/admin/glance"
+        );
         const weeklyActiveResponse = await axios.get(
           `http://localhost:8080/api/v1/admin/weekly-logins?startOfWeek=${startOfWeekISO}`
         );
-        const userGrowthResponse = await axios.get("http://localhost:8080/api/v1/admin/user-growth");
-        const currentActiveUsers = await axios.get("http://localhost:8080/api/v1/admin/current-active-users");
+        const userGrowthResponse = await axios.get(
+          "http://localhost:8080/api/v1/admin/user-growth"
+        );
+        const currentActiveUsers = await axios.get(
+          "http://localhost:8080/api/v1/admin/current-active-users"
+        );
 
         setGlanceData(glanceResponse.data);
         setWeeklyActiveData(weeklyActiveResponse.data);
@@ -187,7 +193,10 @@ const Dashboard = () => {
         </div>
         <div className="chart-item">
           <h3>Weekly Active Users</h3>
-          <Bar data={weeklyActiveChartData} options={weeklyActiveChartOptions} />
+          <Bar
+            data={weeklyActiveChartData}
+            options={weeklyActiveChartOptions}
+          />
         </div>
       </div>
     </div>

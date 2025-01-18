@@ -6,7 +6,9 @@
   list-style-type: none;
   border: none;
   font-family: "Raleway", serif;
+  cursor: pointer;
 }
+
 .user-layout {
   margin: 2rem;
   display: grid;

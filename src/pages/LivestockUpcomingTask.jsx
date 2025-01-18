@@ -4,9 +4,10 @@ import image2 from "../assets/random/image2.png";
 import image3 from "../assets/random/image3.png";
 import image4 from "../assets/random/image4.png";
 
+// import "./LivestockUpcomingTask.css";
 import "./UpcomingTask.css";
 import AddNewTask from "./AddNewTask";
-function UpcomingTask() {
+function LivestockUpcomingTask() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const openModal = () => setIsModalOpen(true);
@@ -22,7 +23,7 @@ function UpcomingTask() {
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/tasks/upcoming?category=CROP", {
+    fetch("http://localhost:8080/api/v1/tasks/upcoming?category=ANIMAL", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -31,6 +32,7 @@ function UpcomingTask() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log("Received data:", data);
         setTasks(data);
         setLoading(false);
       })
@@ -40,10 +42,17 @@ function UpcomingTask() {
       });
   }, []);
 
+  // uncomment to match with muminat's code aand comment the next code if issues
   const convertToISODate = (dateString) => {
     const [day, month, year] = dateString.split("/");
     return `${year}-${month}-${day}`;
   };
+
+  // comment this code and uncomment the above code block if issues
+  // const convertToISODate = (dueDateArray) => {
+  //   const [year, month, day] = dueDateArray;
+  //   return new Date(year, month - 1, day);
+  // };
 
   const calculateDaysLeft = (dueDate) => {
     const now = new Date();
@@ -105,4 +114,4 @@ function UpcomingTask() {
   );
 }
 
-export default UpcomingTask;
+export default LivestockUpcomingTask;
