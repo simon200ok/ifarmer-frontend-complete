@@ -255,7 +255,7 @@ function Modal({ onClose }) {
                     maxLength={50}
                   />
                 </div>
-             <div className="password-group">
+             <div className="user-details">
                <label htmlFor="password">Password</label>
                <div className="profile-password-field">
                  <input
@@ -273,7 +273,7 @@ function Modal({ onClose }) {
                 />
               </div>
             </div>
-            <div className="password-group">
+            <div className="user-details">
               <label htmlFor="confirmPassword">Confirm Password</label>
               <div className="profile-password-field">
                 <input
@@ -293,7 +293,7 @@ function Modal({ onClose }) {
                 />
               </div>
             </div>
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="profile-submit-btn" >
               Save Changes
             </button>
               </form>
