@@ -60,8 +60,8 @@ import UserDashboardLayout from "./pages/UserDashboardLayout";
 import CropPage from "./pages/CropPage";
 import Dashboard from "./pages/Admin-Dashboard/Dashboard";
 import Settings from "./pages/Admin-Dashboard/Settings";
-import ForgotPassword from "./pages/ForgotPassword";
-import ProfileModal from "./pages/UpdateProfile";
+// import ForgotPassword from "./pages/ForgotPassword";
+// import ProfileModal from "./pages/UpdateProfile";
 
 function App() {
   const router = createBrowserRouter([
@@ -118,22 +118,22 @@ function App() {
         },
       ],
     },
-    {
-      path: "/forgot-password",
-      element: <ForgotPassword />,
-    },
-    {
-      path: "/updateprofile",
-      element: <ProfileModal />,
-    },
-    {
-      path: "/forgot-password",
-      element: <ForgotPassword />,
-    },
-    {
-      path: "/updateprofile",
-      element: <ProfileModal />,
-    },
+    // {
+    //   path: "/forgot-password",
+    //   element: <ForgotPassword />,
+    // },
+    // {
+    //   path: "/updateprofile",
+    //   element: <ProfileModal />,
+    // },
+    // {
+    //   path: "/forgot-password",
+    //   element: <ForgotPassword />,
+    // },
+    // {
+    //   path: "/updateprofile",
+    //   element: <ProfileModal />,
+    // },
   ]);
 
   return <RouterProvider router={router} />;
