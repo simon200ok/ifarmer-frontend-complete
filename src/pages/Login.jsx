@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/auth/login",
+        "http://localhost:8080/api/v2/admin/login",
         {
           email,
           password,
@@ -39,7 +39,7 @@ const Login = () => {
         toast.success("Login successful!");
 
         setTimeout(() => {
-          navigate("/homepage/crops");
+          navigate("/admin");
         }, 3000);
       } else {
         toast.error(responseMessage);

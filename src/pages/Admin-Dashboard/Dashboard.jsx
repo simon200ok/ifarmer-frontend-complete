@@ -25,6 +25,7 @@ const Dashboard = () => {
   const [userGrowthData, setUserGrowthData] = useState([]);
   const [adminName, setAdminName] = useState("");
   const [currentActiveUsers, setCurrentActiveUsers] = useState(0);
+  const [error, setError] = useState("");
 
   const getStartOfWeek = () => {
     const now = new Date();
@@ -44,27 +45,60 @@ const Dashboard = () => {
     setAdminName(localStorage.getItem("adminName") || "Admin");
 
     const fetchData = async () => {
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+      if (!token) {
+        setError("No token found, please log in.");
+        return;
+      }
+
       try {
         const startOfWeekISO = getStartOfWeek();
+
+        // Fetch data with Authorization token
         const glanceResponse = await axios.get(
-          "http://localhost:8080/api/v1/admin/glance"
+          "http://localhost:8080/api/v2/admin/glance",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Send token as Bearer
+            },
+          }
         );
         const weeklyActiveResponse = await axios.get(
-          `http://localhost:8080/api/v1/admin/weekly-logins?startOfWeek=${startOfWeekISO}`
+          `http://localhost:8080/api/v2/admin/weekly-logins?startOfWeek=${startOfWeekISO}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const userGrowthResponse = await axios.get(
-          "http://localhost:8080/api/v1/admin/user-growth"
+          "http://localhost:8080/api/v2/admin/user-growth",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        const currentActiveUsers = await axios.get(
-          "http://localhost:8080/api/v1/admin/current-active-users"
+        const currentActiveUsersResponse = await axios.get(
+          "http://localhost:8080/api/v2/admin/current-active-users",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
 
         setGlanceData(glanceResponse.data);
         setWeeklyActiveData(weeklyActiveResponse.data);
         setUserGrowthData(userGrowthResponse.data);
-        setCurrentActiveUsers(currentActiveUsers.data);
+        setCurrentActiveUsers(currentActiveUsersResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        if (error.response && error.response.status === 401) {
+          setError("Session expired. Please log in again.");
+        } else {
+          setError("Failed to fetch data. Please try again later.");
+        }
       }
     };
 
@@ -185,6 +219,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      {error && <div className="error-message">{error}</div>}
 
       <div className="charts-section">
         <div className="chart-item">

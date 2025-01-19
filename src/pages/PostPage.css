@@ -13,12 +13,13 @@ body {
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  overflow-y: scroll;
 }
 
 /* Image Section */
 .post-image-container {
   background-color: black; /* Black background for the container */
-  width: 800px; /* Fixed width for uniformity */
+  width: 640px; /* Fixed width for uniformity */
   height: 300px; /* Fixed height for uniformity */
   display: flex; /* Flexbox for centering the image */
   justify-content: center;
@@ -26,7 +27,6 @@ body {
   border-radius: 8px;
   margin: 0 auto 20px auto; 
   overflow: hidden; /* Ensures no overflow outside the container */
-  margin-right: 50px;
 }
 
 .post-image {
