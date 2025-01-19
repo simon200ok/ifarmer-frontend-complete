@@ -1,0 +1,59 @@
+.date-time-picker {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    width: 240px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .date-picker {
+    margin-bottom: 20px;
+  }
+  
+  .time-picker {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+  }
+  
+  .cancel-btn,
+  .apply-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80px;
+  }
+  
+  .cancel-btn {
+    background: #f5f5f5;
+    color: #333;
+  }
+  
+  .apply-btn {
+    background: #2c7a7b;
+    color: white;
+  }
+  
+  .apply-btn:hover {
+    background: #285e61;
+  }
+  
+  .cancel-btn:hover {
+    background: #e2e8f0;
+  }
+  

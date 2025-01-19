@@ -14,8 +14,7 @@
   display: grid;
   grid-template-columns: 1fr 4.2fr;
   gap: 3rem;
-  height: 100vh;
-  overflow:scroll;
+  overflow-x: scroll;
 }
 
 .user-logo img {
