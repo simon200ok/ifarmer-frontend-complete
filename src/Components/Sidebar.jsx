@@ -129,7 +129,10 @@ function Sidebar() {
         <p className="description">
           Connect with Others, Ask Questions, and Share Your Success Stories.
         </p>
-        <button className="cta-button">Create New Post</button>
+        <button className="cta-button"
+        onClick={() => handleNavigation("/homepage/create-post")}
+        >
+          Create New Post</button>
       </div>
     </div>
   );

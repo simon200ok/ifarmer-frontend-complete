@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+.openModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+
+.add {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.add > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.add label {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Raleway", serif;
+    flex: 1;
+    text-align: left;
+}
+
+.add input,
+.add textarea,
+.add select {
+    flex: 2;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.xButton {
+    display: flex;
+    justify-content: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: grey;
+}
+
+
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.buttonContainer button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #204E51;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonContainer button:hover {
+    background-color: #18403f;
+}
+
+
+
+.photo-upload-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #cccccc3d;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-top: 5px;
+}
+
+.photo-upload-file-name {
+    flex: 1;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.photo-upload-hidden-input {
+    display: none;
+}
+
+.photo-upload-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #F97066;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.photo-upload-button:hover {
+    background-color: #e64337;
+}
+
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    font-family: "Raleway", serif;
+}

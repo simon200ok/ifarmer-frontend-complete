@@ -17,7 +17,6 @@ function ForgetPassword() {
               <label htmlFor="email">Email</label>
               <input type="text" id="email" name="email" required />
             </div>
-            <p>Forgot Password?</p>
             <div className="formButton">
               <button type="submit">Email Verification</button>
             </div>
