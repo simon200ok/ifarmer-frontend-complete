@@ -8,6 +8,9 @@ import Arrow from "../assets/arrow.png";
 import "./CropPage.css";
 import UpcomingTask from "./UpcomingTask";
 
+import AddNewCrop from "../modals/AddNewCrop";
+
+
 function CropPage() {
   const getCurrentGreeting = () => {
     const currentHour = new Date().getHours();
@@ -27,6 +30,10 @@ function CropPage() {
     FLOWERING: 0,
     TOTAL: 0,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -116,12 +123,18 @@ function CropPage() {
                 <p>{getCropCountText(cropStatusCounts.FLOWERING)}</p>
               </div>
             </div>
-            <a>
+           {/* <a>
               Add new Crop
               <span>
                 <img src={Arrow} alt="arrow Icon" />
               </span>
-            </a>
+            </a> */}
+            <button onClick={toggleModal} className="add-crop-btn">
+              Add new Crop
+              <span>
+                <img src={Arrow} alt="arrow Icon" />
+              </span>
+            </button>
           </div>
           <div className="crop-image">
             <img src={Corn} alt="corn Image" />
@@ -158,6 +171,7 @@ function CropPage() {
             </tbody>
           </table>
         </div>
+        {isModalOpen && <AddNewCrop onClose={toggleModal} />}
       </div>
       <UpcomingTask />
     </div>

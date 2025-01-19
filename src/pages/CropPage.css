@@ -38,14 +38,27 @@
   color: #2f580f;
 }
 
-.greens a {
+
+/* .greens a {
   margin-top: 3rem;
   display: flex;
   gap: 1rem;
   align-items: center;
   font-size: 12px;
   color: #2f580f;
+} */
+
+.add-crop-btn {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 12px;
+  color: #2f580f;
+  background: none;
+  cursor: pointer;
 }
+
 
 .greetings h1 {
   color: #1e1e1e;

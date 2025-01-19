@@ -26,7 +26,6 @@ function Sidebar() {
     }
 
     try {
-      // eslint-disable-next-line no-unused-vars
       const response = await axios.post(
         "http://localhost:8080/api/v1/auth/logout",
         {},

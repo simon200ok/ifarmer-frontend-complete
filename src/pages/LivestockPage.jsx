@@ -165,7 +165,7 @@ function LivestockPage() {
             </tbody>
           </table>
         </div>
-        {isModalOpen && <AddNewLivestock onClose={toggleModal} />}
+        {isModalOpen && <AddNewLivestock onClose={toggleModal} />} 
       </div>
       <LivestockUpcomingTask />
     </div>

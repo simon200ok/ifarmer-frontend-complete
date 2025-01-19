@@ -356,7 +356,6 @@ const EditLivestock = () => {
               onChange={handleChange}
             />
           </div>
-
           <div className="field-area">
             <h4>Health Issues</h4>
             <EditTagInput
@@ -384,7 +383,6 @@ const EditLivestock = () => {
             ></textarea>
           </div>
         </div>
-
         <div className="buttonContainer">
           <button type="button" onClick={handleSubmit}>
             Save Changes

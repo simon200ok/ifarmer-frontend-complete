@@ -8,14 +8,46 @@
   justify-content: center;
 }
 
-.modal-e {
+.modal-overlay-e {
   position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px); /* Applies blur to the background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-e {
+  /* position: relative;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; 
+  max-width: 600px;
+  height: 90%; 
+  overflow: hidden; 
+  background-color: white;
+  flex-direction: column; */
+
+  position: relative;
+  width: 80%; /* Adjust as needed */
+  max-width: 550px;
+  height: 90%; /* Set a height to make it scrollable */
+  background-color: white; /* Ensures the modal itself has a white background */
+  border-radius: 20px;
+  overflow: hidden; /* Ensures content doesn’t overflow */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+
+
 }
 
 .xButton-e {
@@ -34,6 +66,9 @@
   max-width: 500px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
+
+  flex: 1;
+  overflow-y: auto; /* Makes the form scrollable */
 }
 
 .form-e > .div-field {
@@ -47,7 +82,7 @@
 .form-e h4 {
   margin: 0;
   flex: 1;
-  font-weight: lighter;
+  font-weight: 350;
 }
 
 .form-e input,
