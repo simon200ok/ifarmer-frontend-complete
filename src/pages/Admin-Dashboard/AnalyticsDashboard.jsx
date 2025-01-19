@@ -104,7 +104,7 @@ const AnalyticsDashboard = () => {
         ],
       });
     } catch (err) {
-      // Updated: Added error handling and display message
+
       setError("Failed to fetch data. Please try again later.");
       console.error(err);
     } finally {
