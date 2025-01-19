@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Subscription.css'
+import styles from '../Components/Subscription.module.css'; // Import the CSS module
 
 const PushNotification = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -148,7 +148,7 @@ const PushNotification = () => {
   };
 
   return (
-    <div className="push-notification">
+    <div className={styles.pushNotification}>
       <h2>Push Notifications</h2>
       {isSubscribed ? (
         <>
@@ -159,7 +159,7 @@ const PushNotification = () => {
         <>
           <button onClick={() => setShowPrompt(true)}>Subscribe to Notifications</button>
           {showPrompt && (
-            <div className="modal">
+            <div className={styles.modal}>
               <p>Would you like to enable push notifications?</p>
               <button onClick={() => subscribeToNotifications()}>Yes</button>
               <button onClick={() => setShowPrompt(false)}>No</button>
@@ -167,7 +167,7 @@ const PushNotification = () => {
           )}
         </>
       )}
-      {errorMessage && <p className="error">{errorMessage}</p>}
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 };

@@ -18,6 +18,7 @@ import Settings from "./pages/Admin-Dashboard/Settings";
 import LivestockPage from "./pages/LivestockPage";
 import EditLivestock from "./pages/EditLivestock";
 import AnalyticsDashboard from "./pages/Admin-Dashboard/AnalyticsDashboard";
+import PostPage from "./pages/PostPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,6 +42,10 @@ function App() {
         {
           path: "/dashboard/community",
           element: <Post />,
+        },
+        {
+          path: "posts/:postId",  // Route for viewing individual post details
+          element: <PostPage />,
         },
       ],
     },
