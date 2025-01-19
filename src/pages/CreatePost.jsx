@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft } from 'lucide-react';
-import SelectFile from "../assets/selectFile.png";
+import SelectFile from "../assets/SelectFile.png";
 import "./CreatePost.css";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
