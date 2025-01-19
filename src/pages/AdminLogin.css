@@ -48,11 +48,12 @@
 }
 
 .formGroup input {
-  background-color: #f2f2f2;
+  background-color: #f2f2f280;
   border-radius: 8px;
   width: 200px;
   padding: 10px;
   outline: none;
+  border: 1px solid #ccc;
 }
 
 form p {
@@ -75,78 +76,4 @@ form button {
   width: 120px;
   padding: 10px 0;
   border-radius: 5px;
-}
-
-.passwordInput {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.passwordInput input {
-  flex: 1;
-  padding-right: 40px;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  width: 200px;
-  padding: 10px;
-  outline: none;
-  border: 1px solid #ccc;
-}
-
-.eyeIcon {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  color: #6c757d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.password-group {
- display: flex;
- gap: 30px;
- margin-top: 3%;
- justify-content: end;
- margin-bottom: 0%;
-}
-
-.password-group label {
-  color: #1e1e1e;
-  font-size: 13px;
-  font-weight: 400;
-  width: 50px;
-}
-
-.password-group input {
-  color: #1e1e1e;
-  font-size: 13px;
-  font-weight: 400;
-  width: 70%;  
-}
-
-.token {
-  margin-top: 0;
-  margin-bottom: 0;
-  border: 2px solid red;
-  height: 1vh;
-  align-items: end;
-  visibility: hidden;
-}
-
-.reset-password-button {
-  display: flex;
-  justify-content: end;
-  margin-top: 4px;
-}
-
-.success-message {
-  color: green;
-  margin-top: 10px;
-}
-  
-.error-message {
-color: red;
-margin-top: 10px;
 }

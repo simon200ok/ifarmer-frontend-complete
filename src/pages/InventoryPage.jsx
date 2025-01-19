@@ -1,17 +1,12 @@
 import { useEffect, useState } from "react";
-
 import dots from "../assets/icons/dots.png";
-
-import Corn from "../assets/corn.png";
+import Tractor from "../assets/tractor.png";
 import Arrow from "../assets/arrow.png";
+import "./InventoryPage.css";
+import InventoryUpcomingTask from "./InventoryUpcomingTask";
+import AddNewInventory from "./AddNewInventory";
 
-import "./CropPage.css";
-import UpcomingTask from "./UpcomingTask";
-
-import AddNewCrop from "../modals/AddNewCrop";
-
-
-function CropPage() {
+function InventoryPage() {
   const getCurrentGreeting = () => {
     const currentHour = new Date().getHours();
     if (currentHour < 12) {
@@ -23,23 +18,19 @@ function CropPage() {
     }
   };
 
-  const [crops, setCrops] = useState([]);
-  const [firstName, setfirstName] = useState("");
-  const [cropStatusCounts, setCropStatusCounts] = useState({
-    GROWING: 0,
-    FLOWERING: 0,
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [inventories, setInventories] = useState([]);
+  const [firstName, setFirstName] = useState("");
+  const [inventoryStatusCounts, setInventoryStatusCounts] = useState({
+    VALUE: 0.00,
     TOTAL: 0,
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedFirstName = localStorage.getItem("firstName");
 
-    setfirstName(storedFirstName);
+    setFirstName(storedFirstName);
 
     if (!token) {
       console.error("No token found");
@@ -62,7 +53,7 @@ function CropPage() {
           (acc, count) => acc + count,
           0
         );
-        setCropStatusCounts({
+        setInventoryStatusCounts({
           ...data,
           TOTAL: total,
         });
@@ -71,11 +62,11 @@ function CropPage() {
         console.error("Error fetching crop status counts:", error)
       );
 
-    const allCropsApi =
+    const allInventoriesApi =
       "http://localhost:8080/api/v1/crops/statistics/get_all_crops_by_user";
-    console.log("Fetching all crops from:", allCropsApi);
+    console.log("Fetching all crops from:", allInventoriesApi);
 
-    fetch(allCropsApi, {
+    fetch(allInventoriesApi, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -85,84 +76,74 @@ function CropPage() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success && Array.isArray(data.responseData)) {
-          setCrops(data.responseData);
+          setInventories(data.responseData);
         } else {
-          setCrops([]);
+          setInventories([]);
           console.error("Unexpected response structure:", data);
         }
       })
       .catch((error) => console.error("Error fetching crops:", error));
   }, []);
 
-  const getCropCountText = (count) => {
-    return `${count} Crop${count === 1 ? "" : "s"}`;
+  const getInventoryCountText = (count) => {
+    return `${count} Inventory${count === 1 ? "" : "s"}`;
   };
 
   return (
     <div className="containers">
-      <div className="crop-wrapper">
+      <div className="inventory-wrapper">
         <div className="greetings">
           <h1>
             {getCurrentGreeting()}, {firstName}
           </h1>
         </div>
-        <div className="backgrounds">
-          <div className="greens">
-            <h1>Manage Your Crops</h1>
-            <div className="crop">
+        <div className="background_inventory">
+          <div className="green_inventory">
+            <h1>Manage Your Inventory</h1>
+            <div className="inventory">
               <div className="total">
-                <h1>Total Crops</h1>
-                <p>{getCropCountText(cropStatusCounts.TOTAL)}</p>
+                <h1>Total Inventory</h1>
+                <p>{getInventoryCountText(inventoryStatusCounts.TOTAL)}</p>
               </div>
               <div className="total">
-                <h1>Growing Crops</h1>
-                <p>{getCropCountText(cropStatusCounts.GROWING)}</p>
-              </div>
-              <div className="total">
-                <h1>Flowering Crops</h1>
-                <p>{getCropCountText(cropStatusCounts.FLOWERING)}</p>
+                <h1>Inventory Value</h1>
+                <p>{getInventoryCountText(inventoryStatusCounts.COST)}</p>
               </div>
             </div>
-           {/* <a>
-              Add new Crop
+            <a onClick={() => setIsModalOpen(true)}>
+              Add New Inventory
               <span>
                 <img src={Arrow} alt="arrow Icon" />
               </span>
-            </a> */}
-            <button onClick={toggleModal} className="add-crop-btn">
-              Add new Crop
-              <span>
-                <img src={Arrow} alt="arrow Icon" />
-              </span>
-            </button>
+            </a>
           </div>
-          <div className="crop-image">
-            <img src={Corn} alt="corn Image" />
+          <div className="inventory-image">
+            <img src={Tractor} alt="tractor Image" />
           </div>
         </div>
         <div className="table">
-          <h1>Current Crops</h1>
+          <h1>Current Inventory</h1>
           <table border="1">
             <thead>
               <tr>
-                <th>Crop name</th>
-                <th>Status</th>
+                <th>Item Type</th>
+                <th>Name</th>
                 <th>Quantity</th>
                 <th>Location</th>
-                <th>Sow Date</th>
-                <th>Harvest Date</th>
+                <th>Date Acquired</th>
+                <th>Cost/Value</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {crops.map((crop) => (
-                <tr key={crop.cropId}>
-                  <td>{crop.cropName}</td>
-                  <td>{crop.cropStatus}</td>
-                  <td>{crop.quantity}</td>
-                  <td>{crop.location}</td>
-                  <td>{crop.sowDate}</td>
-                  <td>{crop.harvestDate}</td>
+              {inventories.map((inventory) => (
+                <tr key={inventory.inventoryId}>
+                  <td>{inventory.category}</td>
+                  <td>{inventory.name}</td>
+                  <td>{inventory.quantity}</td>
+                  <td>{inventory.location}</td>
+                  <td>{inventory.dateAcquired}</td>
+                  <td>{inventory.cost}</td>
                   <td>
                     <img src={dots} alt="Menu" />
                   </td>
@@ -171,11 +152,13 @@ function CropPage() {
             </tbody>
           </table>
         </div>
-        {isModalOpen && <AddNewCrop onClose={toggleModal} />}
       </div>
-      <UpcomingTask />
+      {isModalOpen && (
+        <AddNewInventory onClose={() => setIsModalOpen(false)} />
+      )}
+      <InventoryUpcomingTask />
     </div>
   );
 }
 
-export default CropPage;
+export default InventoryPage;

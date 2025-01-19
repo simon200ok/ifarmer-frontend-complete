@@ -50,13 +50,25 @@ const AnalyticsDashboard = () => {
   const fetchData = async (year) => {
     setLoading(true);
     try {
+      // Updated: Used `axios` to handle API requests, added Authorization header with token.
+      const token = localStorage.getItem("token");
       const [usageTimeResponse, demographicsResponse] = await Promise.all([
         axios.get(
-          `http://localhost:8080/api/v1/admin/average-usage-time?year=${year}`
+          `http://localhost:8080/api/v2/admin/average-usage-time?year=${year}`,
+          {
+            headers: {
+              "Authorization": `Bearer ${token}`,
+            },
+          }
         ),
-        axios.get(`http://localhost:8080/api/v1/admin/user-demographics`),
+        axios.get(`http://localhost:8080/api/v2/admin/user-demographics`, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        }),
       ]);
 
+      // Updated: Parsing and setting data for line chart
       setLineChartData({
         labels: Object.keys(usageTimeResponse.data),
         datasets: [
@@ -80,6 +92,7 @@ const AnalyticsDashboard = () => {
       const femalePercentage =
         totalUsers > 0 ? (femaleCount / totalUsers) * 100 : 0;
 
+      // Updated: Setting data for pie chart
       setPieChartData({
         labels: ["Male", "Female"],
         datasets: [
@@ -91,6 +104,7 @@ const AnalyticsDashboard = () => {
         ],
       });
     } catch (err) {
+
       setError("Failed to fetch data. Please try again later.");
       console.error(err);
     } finally {

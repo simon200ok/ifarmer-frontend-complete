@@ -25,17 +25,18 @@ const Dashboard = () => {
   const [userGrowthData, setUserGrowthData] = useState([]);
   const [adminName, setAdminName] = useState("");
   const [currentActiveUsers, setCurrentActiveUsers] = useState(0);
+  const [error, setError] = useState("");
 
   const getStartOfWeek = () => {
     const now = new Date();
-    const dayOfWeek = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-    const difference = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek; // Adjust for Monday being the start of the week
+    const dayOfWeek = now.getDay();
+    const difference = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek;
     const startOfWeek = new Date(now.setDate(now.getDate() + difference));
-    startOfWeek.setHours(0, 0, 0, 0); // Set time to midnight
+    startOfWeek.setHours(0, 0, 0, 0);
 
-    // Format as YYYY-MM-DDTHH:mm:ss
+
     const formattedDate = startOfWeek
-      .toLocaleString("sv-SE", { timeZone: "UTC" }) // Ensures ISO-like format in local timezone
+      .toLocaleString("sv-SE", { timeZone: "UTC" })
       .replace(" ", "T");
     return formattedDate;
   };
@@ -44,34 +45,66 @@ const Dashboard = () => {
     setAdminName(localStorage.getItem("adminName") || "Admin");
 
     const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("No token found, please log in.");
+        return;
+      }
+
       try {
         const startOfWeekISO = getStartOfWeek();
+
         const glanceResponse = await axios.get(
-          "http://localhost:8080/api/v1/admin/glance"
+          "http://localhost:8080/api/v2/admin/glance",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const weeklyActiveResponse = await axios.get(
-          `http://localhost:8080/api/v1/admin/weekly-logins?startOfWeek=${startOfWeekISO}`
+          `http://localhost:8080/api/v2/admin/weekly-logins?startOfWeek=${startOfWeekISO}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const userGrowthResponse = await axios.get(
-          "http://localhost:8080/api/v1/admin/user-growth"
+          "http://localhost:8080/api/v2/admin/user-growth",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        const currentActiveUsers = await axios.get(
-          "http://localhost:8080/api/v1/admin/current-active-users"
+        const currentActiveUsersResponse = await axios.get(
+          "http://localhost:8080/api/v2/admin/current-active-users",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
 
         setGlanceData(glanceResponse.data);
         setWeeklyActiveData(weeklyActiveResponse.data);
         setUserGrowthData(userGrowthResponse.data);
-        setCurrentActiveUsers(currentActiveUsers.data);
+        setCurrentActiveUsers(currentActiveUsersResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
+        if (error.response && error.response.status === 401) {
+          setError("Session expired. Please log in again.");
+        } else {
+          setError("Failed to fetch data. Please try again later.");
+        }
       }
     };
 
     fetchData();
   }, []);
 
-  // Weekly Active Users Chart Data
+
   const weeklyActiveChartData = useMemo(
     () => ({
       datasets: [
@@ -81,7 +114,7 @@ const Dashboard = () => {
           backgroundColor: "darkgreen",
           borderRadius: 50,
           borderWidth: 0,
-          barThickness: 20, // Adjust bar thickness here
+          barThickness: 20,
         },
       ],
     }),
@@ -94,7 +127,7 @@ const Dashboard = () => {
       scales: {
         x: {
           grid: {
-            display: true, // Optional: Hide grid lines
+            display: true, 
           },
         },
         y: {
@@ -108,7 +141,7 @@ const Dashboard = () => {
     []
   );
 
-  // User Growth Chart Data
+ 
   const userGrowthChartData = useMemo(
     () => ({
       labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -186,12 +219,14 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="charts-section">
-        <div className="chart-item">
+      {error && <div className="error-message">{error}</div>}
+
+      <div className="charts-section1">
+        <div className="chart-item1">
           <h3>User Growth</h3>
           <Line data={userGrowthChartData} options={userGrowthChartOptions} />
         </div>
-        <div className="chart-item">
+        <div className="chart-item1">
           <h3>Weekly Active Users</h3>
           <Bar
             data={weeklyActiveChartData}

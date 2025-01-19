@@ -14,29 +14,34 @@ TagInput.css * {
   border-radius: 4px;
   padding: 1px;
   background-color: #cccccc3d;
-  margin-right: 25%;
 }
 
-.tag {
+.tag-edit {
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: #e6f4e6;
   color: #000;
   border: 1px solid #6fbf73;
-  border-radius: 20px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 24px;
+  padding: -10px;
 }
 
-.tag button.remove-tag {
+.tag-edit button.remove-tag-edit {
   background: none;
   border: none;
   color: #6fbf73;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: lighter;
+  font-size: 3rem;
+  margin-right: -40px;
+  margin-left: -30px;
+  margin-top: -20px;
+  margin-bottom: -10px;
 }
 
-.tag-input {
+.tag-input-edit {
   flex-grow: 1;
   border: none;
   outline: none;
@@ -47,7 +52,7 @@ TagInput.css * {
 
 }
 
-.add-button {
+.add-button-edit {
   background-color: #007bff;
   color: white;
   border: none;
@@ -56,6 +61,6 @@ TagInput.css * {
   cursor: pointer;
 }
 
-.add-button:hover {
+.add-button-edit:hover {
   background-color: #0056b3;
 }

@@ -4,10 +4,10 @@ import image2 from "../assets/random/image2.png";
 import image3 from "../assets/random/image3.png";
 import image4 from "../assets/random/image4.png";
 
-// import "./LivestockUpcomingTask.css";
+
 import AddNewTask from "./AddNewTask";
 import "./UpcomingTask.css";
-function LivestockUpcomingTask() {
+function InventoryUpcomingTask() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const openModal = () => setIsModalOpen(true);
@@ -23,7 +23,7 @@ function LivestockUpcomingTask() {
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/tasks/upcoming?category=ANIMAL", {
+    fetch("http://localhost:8080/api/v1/tasks/upcoming?category=INVENTORY", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ function LivestockUpcomingTask() {
       });
   }, []);
 
-  // uncomment to match with muminat's code aand comment the next code if issues 
+  // uncomment to match with muminat's code aand comment the next code if issues
   const convertToISODate = (dateString) => {
     const [day, month, year] = dateString.split("/");
     return `${year}-${month}-${day}`;
@@ -114,4 +114,4 @@ function LivestockUpcomingTask() {
   );
 }
 
-export default LivestockUpcomingTask;
+export default InventoryUpcomingTask;

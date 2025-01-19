@@ -3,26 +3,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Eye, EyeOff } from 'lucide-react';
 
 import LeftPane from "../Components/LeftPane";
-import "./Login.css";
+import "./AdminLogin.css";
 import logo from "../assets/logo.png";
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
-
-
-  
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,7 +21,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/v1/auth/login",
+        "http://localhost:8080/api/v2/admin/login",
         {
           email,
           password,
@@ -48,7 +39,7 @@ const Login = () => {
         toast.success("Login successful!");
 
         setTimeout(() => {
-          navigate("/homepage");
+          navigate("/admin");
         }, 3000);
       } else {
         toast.error(responseMessage);
@@ -74,9 +65,9 @@ const Login = () => {
   return (
     <div className="wrapper">
       <div className="container">
-        <LeftPane message="Welcome Back" />
+        <LeftPane message="Admin Login Page" />
         <div className="right">
-          <div className="logo" onClick={() => navigate("/homepage")}>
+          <div className="logo">
             <img src={logo} alt="logo" />
           </div>
           <form onSubmit={handleLogin}>
@@ -93,24 +84,16 @@ const Login = () => {
             </div>
             <div className="formGroup">
               <label htmlFor="password">Password</label>
-              <div className="passwordInput">
-      <input
-        type={showPassword ? "text" : "password"}
-        id="password"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <div onClick={togglePasswordVisibility} className="eyeIcon">
-        {showPassword ? <EyeOff /> : <Eye />}
-      </div>
-    </div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
-            <p onClick={() => navigate("/forgot-password")}
-            >
-              Forgot Password?
-            </p>
+            <p>Forgot Password?</p>
             <div className="formButton">
               <button type="submit" disabled={loading}>
                 {loading ? "Logging in..." : "Log In"}
@@ -124,4 +107,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

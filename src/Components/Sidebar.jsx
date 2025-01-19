@@ -322,7 +322,7 @@ function Sidebar() {
     }
 
     try {
-      await axios.post(
+      const response = await axios.post(
         "http://localhost:8080/api/v1/auth/logout",
         {},
         {
@@ -424,7 +424,10 @@ function Sidebar() {
         <p className="description">
           Connect with Others, Ask Questions, and Share Your Success Stories.
         </p>
-        <button className="cta-button">Create New Post</button>
+        <button className="cta-button"
+        onClick={() => handleNavigation("/homepage/create-post")}
+        >
+          Create New Post</button>
       </div>
       {isModalVisible && <Modal onClose={() => setIsModalVisible(false)} />}
     </div>
