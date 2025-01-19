@@ -54,9 +54,10 @@ body {
 }
 
 /* Post Owner Details */
-.post-header {
+.post-header1 {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .post-profile-picture {
@@ -233,4 +234,25 @@ body {
   height: 30px;
   cursor: pointer;
   margin-top: 10px;
+}
+.submit-comment-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-comment-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-comment-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }

@@ -46,7 +46,7 @@ const PostPage = () => {
       );
       setPost((prevPost) => ({
         ...prevPost,
-        liked: !prevPost.liked, // Toggle like state
+        liked: !prevPost.liked,
         likes: prevPost.liked ? prevPost.likes - 1 : prevPost.likes + 1,
       }));
     } catch (error) {
@@ -65,6 +65,7 @@ const PostPage = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setNewComment("");
+      setShowCommentInput(false); // Close the comment box after submission
 
       const postResponse = await axios.get(POST_ENDPOINT, {
         headers: { Authorization: `Bearer ${token}` },
@@ -127,7 +128,7 @@ const PostPage = () => {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           ></textarea>
-          <button className="add-comment-button" onClick={handleAddComment}>
+          <button className="submit-comment-button" onClick={handleAddComment}>
             Submit Comment
           </button>
         </>
