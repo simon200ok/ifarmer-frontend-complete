@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./NotificationPage.css";
-// import LeftPane from "../Components/LeftPane";
 
 const getAuthToken = () => {
   return localStorage.getItem("token");
@@ -25,8 +24,16 @@ function NotificationPage() {
         },
       })
       .then((response) => {
-        setNotifications(response.data);
-        const unreadNotifications = response.data.filter(
+        // Log the response to check the data structure and timestamps
+        console.log(response.data);
+
+        // Ensure the notifications are sorted from most recent to oldest based on the timestamp
+        const sortedNotifications = response.data.reverse(); // Inverts the order of the array
+
+        setNotifications(sortedNotifications);
+
+        // Count unread notifications
+        const unreadNotifications = sortedNotifications.filter(
           (notification) => notification.status === "UNREAD"
         );
         setUnreadCount(unreadNotifications.length);
@@ -99,14 +106,14 @@ function NotificationPage() {
                   <strong>{notification.title}</strong>
                   <p className="notification-message">{notification.message}</p>
                   <p className="notification-timestamp">
-                    <small>{notification.timestamp}</small>
+                    {notification.timestamp}
                   </p>
                 </div>
               </li>
             ))}
           </ul>
         ) : (
-          <p>No notifications.</p>
+          <p>No notifications available.</p>
         )}
       </div>
     </div>

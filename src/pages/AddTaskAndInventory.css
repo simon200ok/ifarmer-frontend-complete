@@ -27,8 +27,14 @@
   color: grey;
 }
 
-.add-new-task-modal form button {
-  background-color: #204e51;
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end !important;
+  margin-top: 20px;
+}
+
+.buttonContainer button {
+  background-color: #204E51;
   color: white;
   border: none;
   padding: 12px 15px;
@@ -36,18 +42,8 @@
   border-radius: 10px;
   width: 150px;
   cursor: pointer;
-  align-self: flex-end;
+  text-align: center;
 }
-
-/* .modal {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-} */
 
 .close {
   display: flex;
@@ -122,24 +118,6 @@ h3 {
 
 .modal-form textarea {
   resize: vertical;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 50px;
-}
-
-.modal-form button {
-  background-color: #204e51;
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  font-size: 16px;
-  border-radius: 10px;
-  width: 150px;
-  cursor: pointer;
-  align-self: flex-end;
 }
 
 .error {

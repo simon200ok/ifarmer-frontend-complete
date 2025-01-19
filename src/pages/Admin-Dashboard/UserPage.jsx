@@ -19,28 +19,40 @@ function UserPage() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/admin/users")
-      .then((response) => response.json())
+    fetch("http://localhost:8080/api/v2/admin/users", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // Include credentials (cookies) if needed by API
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch users.");
+        }
+        return response.json();
+      })
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
   const handleDelete = (userId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this user?"
-    );
+    const confirmed = window.confirm("Are you sure you want to delete this user?");
     if (!confirmed) {
       return;
     }
 
     const token = localStorage.getItem("token");
 
-    fetch(`http://localhost:8080/api/v1/admin/user`, {
+    fetch(`http://localhost:8080/api/v2/admin/user`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      credentials: "include", // Include credentials (cookies) if needed by API
+      body: JSON.stringify({ userId }), // Pass the userId in the body if needed
     })
       .then((response) => {
         if (response.ok) {

@@ -18,6 +18,13 @@ import Settings from "./pages/Admin-Dashboard/Settings";
 import LivestockPage from "./pages/LivestockPage";
 import EditLivestock from "./pages/EditLivestock";
 import AnalyticsDashboard from "./pages/Admin-Dashboard/AnalyticsDashboard";
+import PostPage from "./pages/PostPage";
+import InventoryPage from "./pages/InventoryPage";
+import CreatePost from "./pages/CreatePost";
+import AdminLogin from "./pages/AdminLogin";
+import AdminSignup from "./pages/AdminSignup";
+import AdminForgetPassword from "./pages/AdminForgetPassword";
+import AdminResetPassword from "./pages/AdminResetPassword"
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +49,10 @@ function App() {
           path: "/dashboard/community",
           element: <Post />,
         },
+        {
+          path: "posts/:postId",  // Route for viewing individual post details
+          element: <PostPage />,
+        },
       ],
     },
     {
@@ -57,6 +68,10 @@ function App() {
           element: <LivestockPage />,
         },
         {
+          path: "/homepage/inventory",
+          element: <InventoryPage />,
+        },
+        {
           path: "/homepage/update-livestock/:id",
           element: <EditLivestock />,
         },
@@ -68,11 +83,31 @@ function App() {
           path: "notifications",
           element: <Notification />,
         },
+        {
+          path: "create-post",
+          element: <CreatePost/>,
+        },
       ],
     },
     {
       path: "/forgot-password",
       element: <ForgetPassword />,
+    },
+    {
+      path: "/admin/login",
+      element: <AdminLogin />,
+    },
+    {
+      path: "/admin/signup",
+      element: <AdminSignup />,
+    },
+    {
+      path: "/admin/forgot-password",
+      element: <AdminForgetPassword />,
+    },
+    {
+      path: "/admin/reset-password",
+      element: <AdminResetPassword />,
     },
     {
       path: "/admin",

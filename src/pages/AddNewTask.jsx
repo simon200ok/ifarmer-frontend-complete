@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import PropTypes from "prop-types";
-import "./AddTaskAndInventory.css";
+import "../pages/AddTaskAndInventory.css";
 import "./UpcomingTask.css";
 import "./CropPage.css";
 import { useNavigate } from "react-router";
@@ -72,7 +72,9 @@ function AddNewTask({ onClose }) {
         const data = await response.json();
         console.log("Task created successfully:", data);
         toast.success("Task created successfully!");
-        navigate("/homepage/crops");
+        setTimeout(() => {
+          navigate("/homepage/crops");
+        }, 3000);
       } else {
         const errorDetails = await response.json();
         console.error("Failed to create task:", errorDetails);
@@ -85,6 +87,7 @@ function AddNewTask({ onClose }) {
   };
 
   return (
+    <div className="add-new-task-modal">
     <div className="openModal">
       <ToastContainer />
       <form onSubmit={handleSubmit} className="modal-form">
@@ -175,6 +178,7 @@ function AddNewTask({ onClose }) {
           <button type="submit">Save Task</button>
         </div>
       </form>
+    </div>
     </div>
   );
 }

@@ -1,0 +1,61 @@
+.background_inventory{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    background-color: #c0f196;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  
+  .inventory-image img {
+    width: 200px;
+  }
+  
+  .green_inventory h1 {
+    font-size: 16px;
+    color: #2f580f;
+    font-weight: 500;
+  }
+  .green_inventory {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .inventory {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .inventory h1 {
+    font-size: 14px;
+    color: #2f580f;
+  }
+  
+  .inventory p {
+    font-size: 14px;
+    color: #2f580f;
+  }
+  
+  .green_inventory a {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 12px;
+    color: #2f580f;
+  }
+  
+  .greetings h1 {
+    color: #1e1e1e;
+    margin-top: 2rem;
+    font-size: 16px;
+  }
+  
+  .containers {
+    display: grid;
+    grid-template-columns: 3fr 1.2fr;
+    gap: 3rem;
+  }
+  
