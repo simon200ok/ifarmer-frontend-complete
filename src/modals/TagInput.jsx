@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+//Review later - Proptype import
+import PropTypes from "prop-types";
 import "./TagInput.css";
 
 const TagInput = ({ placeholder }) => {
@@ -52,6 +55,10 @@ const TagInput = ({ placeholder }) => {
       </button>
     </div>
   );
+};
+
+TagInput.propTypes = {
+  placeholder: PropTypes.string,
 };
 
 export default TagInput;

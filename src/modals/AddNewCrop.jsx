@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+
+//Review later - Proptype import
+import PropTypes from "prop-types";
+
 import { X } from "lucide-react";
 import TagInput from "./tagInput";
 import PhotoUploadInput from "./PhotoUploadInput";
@@ -365,6 +369,11 @@ const AddNewCrop = ({ onClose }) => {
       </div>
     </div>
   );
+};
+
+//Review later - Proptype definition
+AddNewCrop.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default AddNewCrop;

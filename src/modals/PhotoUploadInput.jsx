@@ -1,4 +1,8 @@
 import React from "react";
+
+//Review later - Proptype import 
+import PropTypes from "prop-types";
+
 import "./PhotoUploadInput.css";
 import { FolderOpen } from "lucide-react";
 
@@ -39,6 +43,12 @@ const PhotoUploadInput = ({ formData, setFormData }) => {
       </label>
     </div>
   );
+};
+
+//Review later - Proptype definition
+PhotoUploadInput.propTypes = {
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
 };
 
 export default PhotoUploadInput;

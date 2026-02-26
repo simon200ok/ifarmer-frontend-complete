@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+//Review later - Proptype import
+import PropTypes from "prop-types";
 
 import logo from "../assets/logo.png";
 import sampleProfPic from "../assets/sample-profile-pic.jpeg";
@@ -221,7 +223,7 @@ function Modal({ onClose }) {
                     id="name"
                     value={formData.name}            
                     onChange={handleInputChange}
-                    maxlength={30}
+                    maxLength={30}
                   />
                 </div>
                 <div className="user-details">
@@ -304,6 +306,10 @@ function Modal({ onClose }) {
     </div>
   );
 }
+//Review later - Proptype definition
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 function Sidebar() {
   const navigate = useNavigate();

@@ -54,8 +54,8 @@ function ResetPassword() {
     setResponseMessage("");
     setErrorMessage("");
 
-    console.log("Password being tested:", password); 
-    console.log("Validation result:", validatePassword(password));
+    console.log("Password being tested:", formData.password); 
+    console.log("Validation result:", validatePassword(formData.password));
 
     if (!validatePassword(formData.password)) {
       alert("Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.");

@@ -1,4 +1,6 @@
 import React from "react";
+//Review later - Proptype import
+import PropTypes from "prop-types";
 import "./EmailForgotPassModal.css";
 
 function EmailForgotPassModal({ isOpen, onClose, message }) {
@@ -25,5 +27,11 @@ function EmailForgotPassModal({ isOpen, onClose, message }) {
     </div>
   );
 }
+//Review later - Proptype definition
+EmailForgotPassModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
 export default EmailForgotPassModal;

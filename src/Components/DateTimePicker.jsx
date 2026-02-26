@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+
+//Review later - Proptype import
+import PropTypes from "prop-types";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DateTimePicker.css"; 
@@ -86,6 +90,11 @@ const DateTimePicker = ({ onCancel, onApply }) => {
       </div>
     </div>
   );
+};
+//Review later - Proptype import
+DateTimePicker.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  onApply: PropTypes.func.isRequired,
 };
 
 export default DateTimePicker;

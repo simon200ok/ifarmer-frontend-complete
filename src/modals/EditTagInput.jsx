@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+
+//Review later - Proptype import
+import PropTypes from "prop-types";
+
 import "./EditTagInput.css";
 
 const EditTagInput = ({ placeholder }) => {
@@ -56,6 +60,11 @@ const EditTagInput = ({ placeholder }) => {
       </button>
     </div>
   );
+};
+
+//Review later - Proptype definition
+EditTagInput.propTypes = {
+  placeholder: PropTypes.string,
 };
 
 export default EditTagInput;
