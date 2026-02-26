@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { X } from "lucide-react";
-import TagInput from "./tagInput";
+import TagInput from "./TagInput"
 import PhotoUploadInput from "./PhotoUploadInput";
 import "./AddNewCropAndLivestock.css";
 import { useNavigate } from "react-router";
